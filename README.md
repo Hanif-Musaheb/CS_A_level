@@ -15,7 +15,7 @@ Hanif Musahebs' Computer Science Blog
 
 * **1.3 Exchanging data**
   * 1.3.1 Compression, encryption and hashing
-  * 1.3.2 Databases
+  * [1.3.2 Databases]()
   * 1.3.3 Networks
   * 1.3.4 Web technologies
 
