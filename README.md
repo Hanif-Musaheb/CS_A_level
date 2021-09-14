@@ -1,5 +1,7 @@
 # CS_A_level
 Hanif Musahebs' Computer Science Blog
+
+[OCR Specification](https://www.ocr.org.uk/Images/170844-specification-accredited-a-level-gce-computer-science-h446.pdf)
 # Contents 
 ### Computer Systems - Component 1
 * **1.1 Components of a computer and their uses**
