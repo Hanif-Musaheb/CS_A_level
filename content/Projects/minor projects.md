@@ -74,18 +74,10 @@ for i in range(len(digits_input)):
     for j in range(len(digits_input)):
         b=digits[]+digits[]
 
-
-
-        
         output=digits[i]+b
         print(output)
         output=digits[i]+b[::-1]
         print(output)
-
-
-
-
-
 
 
 numbers='1234'
@@ -123,10 +115,6 @@ for i in range(4):
     
 print(pair)
 
-
-
-
-
 print(shifter(digits,0))
 
     #b_inv=b[::-1]
@@ -138,9 +126,6 @@ for i in range(4):
                 output+=digits_input[i]+digits_input[j]+digits_input[k]+digits_input[p]
                 print(output)
                 output=''
-                
-
-
 
 
 pin=['1','2','3','4','1','2','3','4','1','2','3','4']
@@ -165,12 +150,6 @@ for i in range(4):
         k=k[0:1] 
     print(k)
     k=''
-
-
-
-
-
-
 
 
 pin=['1','2','3','4','1','2','3','4','1','2','3','4']
@@ -199,11 +178,6 @@ def shifter():
                 #print(k+'# #')
             k=k[0:1]
         k=''
-                
-                    
-            
-
-
 shifter()
 
 ```
