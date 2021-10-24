@@ -4,7 +4,7 @@
 
 [**Theif**](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/Projects/Theif.md)
 
-[**Chess**]()
+[**Chess**](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/Projects/Chess.md)
 
 
 
