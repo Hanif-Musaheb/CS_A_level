@@ -1,5 +1,6 @@
 # arithmetic test
 ``` python
+
 import random
 import time
 
@@ -16,17 +17,25 @@ def ans(a,rand_num,c):
         return (a+c)
     elif rand_num == 3:
         return (a-c)
-def div_ques(a):
-    c=a*random.randint(0,9)
-    return c
- 
-    
+
+  
 time_start = time.time()
-for i in range(6):
-    rand_num=random.randint(2,3)
-    a=random.randint(1,99)
+for i in range(10):
+    rand_num=random.randint(0,3)
+    e=99 
+    if rand_num==0:
+        e=12
+    if rand_num==1:
+        c=random.randint(1,12)
+        a=c*random.randint(2,12)
+    
+    else :
+        a=random.randint(1,e)
+        c=random.randint(1,e)
+        
     b=equation_type[rand_num]
-    c=random.randint(1,99)
+
+    
     user_input=int(input('{}{}{}= '.format(a,b,c)))
     if user_input==ans(a,rand_num,c):
         correct+=1
@@ -35,28 +44,8 @@ for i in range(6):
         wrong+=1
         print('wrong')
         
-for i in range(2):
-    a=random.randint(0,12)
-    c=random.randint(0,12)
-    user_input=int(input('{}x{}= '.format(a,c)))
-    if user_input==ans(a,0,c):
-        correct+=1
-        print('correct')
-    else:
-        wrong+=1
-        print('wrong')
 
-for i in range(2):
-    c=random.randint(1,12)
-    a=c*random.randint(1,12)
-    
-    user_input=int(input('{}/{}= '.format(a,c)))
-    if user_input==ans(a,1,c):
-        correct+=1
-        print('correct')
-    else:
-        wrong+=1
-        print('wrong')
 
 print('correct:{}\nwrong:{}\nsuccess rate:{}\n time taken:{}'.format(correct,wrong,correct/10,(time.time()-time_start)))
+
 ```
