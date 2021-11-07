@@ -74,3 +74,40 @@ with open('book.csv') as f:
 
        # writer.writerow({'Name':'Bob','Correct':4,'Time Taken (s)':76})
 ```
+New and improved Score Saver!
+```python
+import csv
+
+row_in_database=[]
+name='Haanif'
+score=10
+time_score=44
+new_score=True
+
+#reader  
+with open('book.csv') as f:
+    reader=csv.reader(f)
+    
+    for row in reader:
+        row_in_database+=row
+    print(row_in_database)
+    if name in row_in_database:
+        print(row_in_database.index(name),';')
+        print(row_in_database.count(name),';;')
+
+
+###writer
+    with open('book.csv','w', newline='') as f:
+        fieldnames=['Name','Correct','Time Taken (s)']
+        writer=csv.DictWriter(f,fieldnames=fieldnames)
+        writer.writeheader()
+        for i in range(int(len(row_in_database)/3)-1):
+            if name == row_in_database[i*3+3]:
+                #if i==row_in_database.index(name)/3:
+                writer.writerow({'Name':name,'Correct':score,'Time Taken (s)':time_score})
+                print('!')
+                new_score=False
+                next
+            else:writer.writerow({'Name':row_in_database[i*3+3],'Correct':row_in_database[i*3+4],'Time Taken (s)':row_in_database[i*3+5]})
+        if new_score==True: writer.writerow({'Name':name,'Correct':score,'Time Taken (s)':time_score})
+```
