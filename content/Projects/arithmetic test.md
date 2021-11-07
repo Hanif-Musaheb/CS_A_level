@@ -111,3 +111,91 @@ with open('book.csv') as f:
             else:writer.writerow({'Name':row_in_database[i*3+3],'Correct':row_in_database[i*3+4],'Time Taken (s)':row_in_database[i*3+5]})
         if new_score==True: writer.writerow({'Name':name,'Correct':score,'Time Taken (s)':time_score})
 ```
+## Final Code
+```python
+import random
+import time
+import csv
+
+user_name=str(input('name?'))
+equation_type=['x','/','+','-']
+correct=0
+wrong=0
+
+def ans(a,rand_num,c):
+    if rand_num == 0:
+        return (a*c)
+    elif rand_num == 1:
+        return (a/c)
+    elif rand_num == 2:
+        return (a+c)
+    elif rand_num == 3:
+        return (a-c)
+
+  
+time_start = time.time()
+for i in range(10):
+    rand_num=random.randint(0,3)
+    e=99 
+    if rand_num==0:
+        e=12
+    if rand_num==1:
+        c=random.randint(1,12)
+        a=c*random.randint(2,12)
+    
+    else :
+        a=random.randint(1,e)
+        c=random.randint(1,e)
+        
+    b=equation_type[rand_num]
+
+    
+    user_input=int(input('{}{}{}= '.format(a,b,c)))
+    if user_input==ans(a,rand_num,c):
+        correct+=1
+        print('correct')
+    else:
+        wrong+=1
+        print('wrong')
+        
+
+time_score=int((time.time()-time_start))
+print('correct:{}\nwrong:{}\nsuccess rate:{}\n time taken:{}'.format(correct,wrong,correct/10,(time.time()-time_start)))
+
+row_in_database=[]
+new_score=True
+
+try:
+    #reader  
+    with open('book.csv') as f:
+        reader=csv.reader(f)
+        
+        for row in reader:
+            row_in_database+=row
+
+    ###writer
+        with open('book.csv','w', newline='') as f:
+            fieldnames=['Name','Correct','Time Taken (s)']
+            writer=csv.DictWriter(f,fieldnames=fieldnames)
+            writer.writeheader()
+            for i in range(int(len(row_in_database)/3)-1):
+                if user_name == row_in_database[i*3+3]:
+                    new_score=False
+                    if (correct>=int(row_in_database[i*3+4]) and time_score<int(row_in_database[i*3+5]))or correct>int(row_in_database[i*3+4]):
+                            writer.writerow({'Name':user_name,'Correct':correct,'Time Taken (s)':time_score})
+                            print('!')                      
+                    else:writer.writerow({'Name':row_in_database[i*3+3],'Correct':row_in_database[i*3+4],'Time Taken (s)':row_in_database[i*3+5]})
+                else:writer.writerow({'Name':row_in_database[i*3+3],'Correct':row_in_database[i*3+4],'Time Taken (s)':row_in_database[i*3+5]})
+            if new_score==True: writer.writerow({'Name':user_name,'Correct':correct,'Time Taken (s)':time_score})
+
+    
+   
+
+except:
+    with open('book.csv','w', newline='') as f:
+            fieldnames=['Name','Correct','Time Taken (s)']
+            writer=csv.DictWriter(f,fieldnames=fieldnames)
+            writer.writeheader()
+            writer.writerow({'Name':user_name,'Correct':correct,'Time Taken (s)':time_score})
+
+```
