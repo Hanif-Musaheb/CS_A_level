@@ -199,3 +199,7 @@ except:
             writer.writerow({'Name':user_name,'Correct':correct,'Time Taken (s)':time_score})
 
 ```
+<img width="618" alt="Screenshot 2021-11-07 at 21 44 09" src="https://user-images.githubusercontent.com/90515435/140662950-cc6dbd7d-b00d-451d-a235-09144de4a213.png">
+(the CSV file it is saving to)
+<img width="299" alt="image" src="https://user-images.githubusercontent.com/90515435/140662978-4d0bf87c-a923-4b13-a723-eb181b4a1875.png">
+
