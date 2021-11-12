@@ -86,4 +86,60 @@ For movement i propose using a method by which you subtract or add to a peices p
 [+7][+8][+9]
 ```
 This shows the how the would move for only one tile away.
+# Jake over here
 
+```python
+import turtle
+window = turtle.Screen()
+window.title("chess")
+window.bgcolor('white')
+window.setup(width=800, height=800)
+window.tracer(0)
+
+window.addshape("chess_board_.gif")
+board= turtle.Turtle()
+board.shape("chess_board_.gif")
+board.goto(0,0)
+board.pu()
+
+window.addshape("pawn.gif")
+pawn=turtle.Turtle()
+pawn.shape("pawn.gif")
+pawn.pu()
+
+pawn1=turtle.Turtle()
+pawn1.shape("pawn.gif")
+pawn1.pu()
+
+pawn=turtle.Turtle()
+pawn.shape("pawn.gif")
+pawn.pu()
+
+pawn=turtle.Turtle()
+pawn.shape("pawn.gif")
+pawn.pu()
+
+pawn=turtle.Turtle()
+pawn.shape("pawn.gif")
+pawn.pu()
+
+pawn=turtle.Turtle()
+pawn.shape("pawn.gif")
+pawn.pu()
+
+pawn=turtle.Turtle()
+pawn.shape("pawn.gif")
+pawn.pu()
+
+pawn=turtle.Turtle()
+pawn.shape("pawn.gif")
+pawn.pu()
+
+
+
+window.listen()
+pawn.ondrag(pawn.goto)
+
+while True:
+    window.update()
+```
