@@ -103,43 +103,57 @@ board.goto(0,0)
 board.pu()
 
 window.addshape("pawn.gif")
-pawn=turtle.Turtle()
-pawn.shape("pawn.gif")
-pawn.pu()
+wpawn1=turtle.Turtle()
+wpawn1.shape("pawn.gif")
+wpawn1.pu()
 
-pawn1=turtle.Turtle()
-pawn1.shape("pawn.gif")
-pawn1.pu()
+wpawn2=wpawn1.clone()
+wpawn3=wpawn1.clone()
+wpawn4=wpawn1.clone()
+wpawn5=wpawn1.clone()
+wpawn6=wpawn1.clone()
+wpawn7=wpawn1.clone()
+wpawn8=wpawn1.clone()
 
-pawn=turtle.Turtle()
-pawn.shape("pawn.gif")
-pawn.pu()
+####
+window.addshape("pawn.gif")
+bpawn1=turtle.Turtle()
+bpawn1.shape("pawn.gif")
+bpawn1.pu()
 
-pawn=turtle.Turtle()
-pawn.shape("pawn.gif")
-pawn.pu()
+bpawn2=bpawn1.clone()
+bpawn3=bpawn1.clone()
+bpawn4=bpawn1.clone()
+bpawn5=bpawn1.clone()
+bpawn6=bpawn1.clone()
+bpawn7=bpawn1.clone()
+bpawn8=bpawn1.clone()
 
-pawn=turtle.Turtle()
-pawn.shape("pawn.gif")
-pawn.pu()
 
-pawn=turtle.Turtle()
-pawn.shape("pawn.gif")
-pawn.pu()
-
-pawn=turtle.Turtle()
-pawn.shape("pawn.gif")
-pawn.pu()
-
-pawn=turtle.Turtle()
-pawn.shape("pawn.gif")
-pawn.pu()
 
 
 
 window.listen()
-pawn.ondrag(pawn.goto)
+wpawn1.ondrag(wpawn1.goto)
+wpawn2.ondrag(wpawn2.goto)
+wpawn3.ondrag(wpawn3.goto)
+wpawn4.ondrag(wpawn4.goto)
+wpawn5.ondrag(wpawn5.goto)
+wpawn6.ondrag(wpawn6.goto)
+wpawn7.ondrag(wpawn7.goto)
+wpawn8.ondrag(wpawn8.goto)
+####
+bpawn1.ondrag(bpawn1.goto)
+bpawn2.ondrag(bpawn2.goto)
+bpawn3.ondrag(bpawn3.goto)
+bpawn4.ondrag(bpawn4.goto)
+bpawn5.ondrag(bpawn5.goto)
+bpawn6.ondrag(bpawn6.goto)
+bpawn7.ondrag(bpawn7.goto)
+bpawn8.ondrag(bpawn8.goto)
+
 
 while True:
     window.update()
+
 ```
