@@ -28,6 +28,10 @@ chess board is:
 ![rook_white](https://user-images.githubusercontent.com/90515435/141696393-7e099da2-9e27-40b5-82e7-63da8a2a4b91.gif)
 ![white_pawn](https://user-images.githubusercontent.com/90515435/141697127-e978c715-8cf3-4283-b78a-0557c77094d4.gif)
 ![black_pawn](https://user-images.githubusercontent.com/90515435/141697132-c86e83a4-1073-4d6a-a594-10db0d725919.gif)
+![white_queen](https://user-images.githubusercontent.com/90515435/141700273-088bb871-ea57-469d-9166-bec3be5695f8.gif)
+![black_queen](https://user-images.githubusercontent.com/90515435/141700277-7c536b82-cca7-425a-99e2-f8a0caa7f080.gif)
+![white_castle](https://user-images.githubusercontent.com/90515435/141700284-b7b9d68e-139b-4a31-8faf-1a6bd6c37ad4.gif)
+![black_castle](https://user-images.githubusercontent.com/90515435/141700290-5d8c7c48-e525-4690-9dba-7d893c8ab91c.gif)
 
 
 ```python
@@ -103,15 +107,35 @@ window.bgcolor('white')
 window.setup(width=800, height=800)
 window.tracer(0)
 
-window.addshape("chess_board_.gif")
+window.addshape("chess_board.gif")
+window.addshape("black_queen.gif")
+window.addshape("white_queen.gif")
+window.addshape("black_king.gif")
+window.addshape("white_queen.gif")
+window.addshape("white_rook.gif")
+window.addshape("black_rook.gif")
+window.addshape("white_castle.gif")            
+window.addshape("black_castle.gif")
+window.addshape("black_horse.gif")
+window.addshape("white_horse.gif")
+window.addshape("black_pawn.gif")
+window.addshape("white_pawn.gif")
+
+##peice=turtle.Turtle()
+##peice.pu()
+##peice.goto(200,200)
+##
+##peice
+
+
 board= turtle.Turtle()
-board.shape("chess_board_.gif")
+board.shape("chess_board.gif")
 board.goto(0,0)
 board.pu()
 
-window.addshape("pawn.gif")
+
 wpawn1=turtle.Turtle()
-wpawn1.shape("pawn.gif")
+wpawn1.shape("white_queen.gif")
 wpawn1.pu()
 
 wpawn2=wpawn1.clone()
@@ -123,9 +147,9 @@ wpawn7=wpawn1.clone()
 wpawn8=wpawn1.clone()
 
 ####
-window.addshape("pawn.gif")
+
 bpawn1=turtle.Turtle()
-bpawn1.shape("pawn.gif")
+bpawn1.shape("black_castle.gif")
 bpawn1.pu()
 
 bpawn2=bpawn1.clone()
@@ -162,5 +186,7 @@ bpawn8.ondrag(bpawn8.goto)
 
 while True:
     window.update()
+
+
 
 ```
