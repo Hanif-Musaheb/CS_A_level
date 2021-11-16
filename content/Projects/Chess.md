@@ -192,3 +192,86 @@ while True:
 
 
 ```
+```python
+import turtle
+window = turtle.Screen()
+window.title("chess")
+window.bgcolor('white')
+window.setup(width=800, height=800)
+window.tracer(0)
+
+window.addshape("chess_board_.gif")
+board= turtle.Turtle()
+board.shape("chess_board_.gif")
+board.goto(0,0)
+board.pu()
+
+window.addshape("pawn.gif")
+wpawn1=turtle.Turtle()
+wpawn1.shape("pawn.gif")
+wpawn1.pu()
+wpawn1.goto(-40,-200)
+
+wpawn2=wpawn1.clone()
+wpawn2.goto(-120,-200)
+wpawn3=wpawn1.clone()
+wpawn3.goto(-200,-200)
+wpawn4=wpawn1.clone()
+wpawn4.goto(-280,-200)
+wpawn5=wpawn1.clone()
+wpawn5.goto(40,-200)
+wpawn6=wpawn1.clone()
+wpawn6.goto(120,-200)
+wpawn7=wpawn1.clone()
+wpawn7.goto(200,-200)
+wpawn8=wpawn1.clone()
+wpawn8.goto(280,-200)
+
+####
+window.addshape("bpawn.gif")
+bpawn1=turtle.Turtle()
+bpawn1.shape("bpawn.gif")
+bpawn1.pu()
+bpawn1.goto(-40,200)
+
+bpawn2=bpawn1.clone()
+bpawn2.goto(-120,200)
+bpawn3=bpawn1.clone()
+bpawn3.goto(-200,200)
+bpawn4=bpawn1.clone()
+bpawn4.goto(-280,200)
+bpawn5=bpawn1.clone()
+bpawn5.goto(40,200)
+bpawn6=bpawn1.clone()
+bpawn6.goto(120,200)
+bpawn7=bpawn1.clone()
+bpawn7.goto(200,200)
+bpawn8=bpawn1.clone()
+bpawn8.goto(280,200)
+
+
+
+window.listen()
+wpawn1.ondrag(wpawn1.goto)
+wpawn2.ondrag(wpawn2.goto)
+wpawn3.ondrag(wpawn3.goto)
+wpawn4.ondrag(wpawn4.goto)
+wpawn5.ondrag(wpawn5.goto)
+wpawn6.ondrag(wpawn6.goto)
+wpawn7.ondrag(wpawn7.goto)
+wpawn8.ondrag(wpawn8.goto)
+####
+bpawn1.ondrag(bpawn1.goto)
+bpawn2.ondrag(bpawn2.goto)
+bpawn3.ondrag(bpawn3.goto)
+bpawn4.ondrag(bpawn4.goto)
+bpawn5.ondrag(bpawn5.goto)
+bpawn6.ondrag(bpawn6.goto)
+bpawn7.ondrag(bpawn7.goto)
+bpawn8.ondrag(bpawn8.goto)
+
+
+while True:
+    window.update()
+
+```
