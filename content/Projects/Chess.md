@@ -287,3 +287,6 @@ bking.ondrag(bking.goto)
 while True:
     window.update()
 ```
+(evidence of it working)
+![image](https://user-images.githubusercontent.com/90515435/142595436-9451735d-aee1-4cc7-8533-9f7558e69d20.png)
+
