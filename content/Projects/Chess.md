@@ -172,7 +172,7 @@ whorse1.shape("white_horse.gif")
 whorse1.pu()
 whorse1.goto(-200,-280)
 
-whorse2=wrook1.clone()
+whorse2=whorse1.clone()
 whorse2.goto(200,-280)
 
 wqueen=turtle.Turtle()
@@ -213,7 +213,7 @@ bcastle1.shape("black_castle.gif")
 bcastle1.pu()
 bcastle1.goto(-280,280)
 
-bcastle2=wcastle1.clone()
+bcastle2=bcastle1.clone()
 bcastle2.goto(280,280)
 
 brook1=turtle.Turtle()
@@ -221,7 +221,7 @@ brook1.shape("black_rook.gif")
 brook1.pu()
 brook1.goto(-120,280)
 
-brook2=wrook1.clone()
+brook2=brook1.clone()
 brook2.goto(120,280)
 
 bhorse1=turtle.Turtle()
@@ -229,7 +229,7 @@ bhorse1.shape("black_horse.gif")
 bhorse1.pu()
 bhorse1.goto(-200,280)
 
-bhorse2=wrook1.clone()
+bhorse2=bhorse1.clone()
 bhorse2.goto(200,280)
 
 bqueen=turtle.Turtle()
@@ -283,9 +283,14 @@ bhorse2.ondrag(bhorse2.goto)
 bqueen.ondrag(bqueen.goto)
 bking.ondrag(bking.goto)
 
+def kill_peice():
+    print('!')
+
+window.onclick(kill_peice())
 
 while True:
     window.update()
+
 ```
 (evidence of it working)
 ![image](https://user-images.githubusercontent.com/90515435/142595436-9451735d-aee1-4cc7-8533-9f7558e69d20.png)
