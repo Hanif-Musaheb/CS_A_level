@@ -1,41 +1,7 @@
-## Chess
+# Chess
 So far i have been workig on the UI and the engine seperatly
-(UI code)
-```python
-import turtle
-window = turtle.Screen()
-window.title("chess")
-window.bgcolor('light grey')
-window.setup(width=800, height=800)
-window.tracer(0)
-
-window.addshape("chess_board.gif")
-load_bar= turtle.Turtle()
-load_bar.shape("chess_board.gif")
-load_bar.goto(0,0)
-load_bar.pu()
-
-while True:
-    window.update()
-
-```
-chess board is:
-
-![chess_board](https://user-images.githubusercontent.com/90515435/138888602-5da74088-0051-490f-b819-83b5ea5823b7.gif)
-![black_horse](https://user-images.githubusercontent.com/90515435/141696372-6871da5d-546f-4520-ad24-20e39b97f2d9.gif)
-![horse_white](https://user-images.githubusercontent.com/90515435/141696381-2d4e7758-9442-4abf-967f-241fcf412e08.gif)
-![rook_black](https://user-images.githubusercontent.com/90515435/141696387-f72f8168-7db5-4ae7-9595-1505ec59f451.gif)
-![rook_white](https://user-images.githubusercontent.com/90515435/141696393-7e099da2-9e27-40b5-82e7-63da8a2a4b91.gif)
-![white_pawn](https://user-images.githubusercontent.com/90515435/141697127-e978c715-8cf3-4283-b78a-0557c77094d4.gif)
-![black_pawn](https://user-images.githubusercontent.com/90515435/141697132-c86e83a4-1073-4d6a-a594-10db0d725919.gif)
-![white_king](https://user-images.githubusercontent.com/90515435/141700963-19b7ad33-28bc-490f-9e4c-f9aaa86d5e46.gif)
-![black_king](https://user-images.githubusercontent.com/90515435/141700970-2a7bc674-d81b-4286-8c86-fe003680a273.gif)
-![white_queen](https://user-images.githubusercontent.com/90515435/141700974-07bd37d2-ba0e-4a9f-8475-cbf3a5c8d1a8.gif)
-![black_queen](https://user-images.githubusercontent.com/90515435/141700979-3c47806a-50e2-4ebe-ac2d-8c823feaebe5.gif)
-![white_castle](https://user-images.githubusercontent.com/90515435/141700284-b7b9d68e-139b-4a31-8faf-1a6bd6c37ad4.gif)
-![black_castle](https://user-images.githubusercontent.com/90515435/141700290-5d8c7c48-e525-4690-9dba-7d893c8ab91c.gif)
-
-
+## Chess Engine
+### First Iteration
 ```python
         
 board=[['br1'],['bk1'],['bb1'],['bq'],['bK'],['bb2'],['bk2'],['br2'],
@@ -99,8 +65,92 @@ For movement i propose using a method by which you subtract or add to a peices p
 [+7][+8][+9]
 ```
 This shows the how the would move for only one tile away.
-# UI
+### Second Iteration 
+The secon iteration came about as the old approach of using an array and using kind of like a long list was very confusing to code a use and is why i could only get part throuhg programming the pawn movement rules. However it lay the gorund work for the method i am using in the second iteration which use an array in that array and yes i know this sounds more complicated but this way i can use it to give the peice coordinates. This removes the annoyance of having a move to the front left be -7 in the array as well as me not knowing how i would detect the edges of the board.
+```python
+board2=[['bc','.','.','bp','.','.','.','.'],
+        ['.','.','.','.','.','.','.','.'],
+        ['.','.','.','.','.','.','.','.'],
+        ['.','.','.','.','.','.','.','.'],
+        ['wp','.','.','.','.','.','.','.'],
+        ['.','.','.','.','.','.','.','.'],
+        ['.','.','.','.','.','.','.','.'],
+        ['.','.','.','.','.','.','.','.']]
 
+position='00'
+possible_moves=[]
+def possible_moves(position):
+    possible_moves_in=[]
+    for i in range(7):
+        possible_position='{}{}'.format((i+1),position[1])
+
+        y_pos_pos=int(possible_position[1])
+        x_pos_pos=int(possible_position[0])+int(position[0])
+        
+        if board2[y_pos_pos][x_pos_pos] != '.':
+            if (str(board2[y_pos_pos][x_pos_pos]))[0]=='w':
+                print(board2[y_pos_pos][x_pos_pos]) 
+                possible_moves_in.append(possible_position)#entering possible move
+                break
+            else: break
+        print(board2[y_pos_pos][x_pos_pos]) 
+        possible_moves_in.append(possible_position)#entering possible move
+        
+    for i in range(7):
+        possible_position='{}{}'.format(position[1],(i+1))
+        #print(possible_position)
+        if board2[int(possible_position[1])][int(possible_position[0])] != '.':
+            if (str(board2[int(possible_position[1])][int(possible_position[0])]))[0]=='w':
+                print(board2[int(possible_position[1])][int(possible_position[0])]) #y,x
+                possible_moves_in.append(possible_position)#entering possible move
+                break
+            else: break
+        print(board2[int(possible_position[1])][int(possible_position[0])]) #y,x
+        possible_moves_in.append(possible_position)#entering possible move
+    return possible_moves_in
+    
+    
+print(possible_moves(position))
+```
+
+## UI
+### First iteration
+(UI code)
+```python
+import turtle
+window = turtle.Screen()
+window.title("chess")
+window.bgcolor('light grey')
+window.setup(width=800, height=800)
+window.tracer(0)
+
+window.addshape("chess_board.gif")
+load_bar= turtle.Turtle()
+load_bar.shape("chess_board.gif")
+load_bar.goto(0,0)
+load_bar.pu()
+
+while True:
+    window.update()
+
+```
+chess board is:
+
+![chess_board](https://user-images.githubusercontent.com/90515435/138888602-5da74088-0051-490f-b819-83b5ea5823b7.gif)
+![black_horse](https://user-images.githubusercontent.com/90515435/141696372-6871da5d-546f-4520-ad24-20e39b97f2d9.gif)
+![horse_white](https://user-images.githubusercontent.com/90515435/141696381-2d4e7758-9442-4abf-967f-241fcf412e08.gif)
+![rook_black](https://user-images.githubusercontent.com/90515435/141696387-f72f8168-7db5-4ae7-9595-1505ec59f451.gif)
+![rook_white](https://user-images.githubusercontent.com/90515435/141696393-7e099da2-9e27-40b5-82e7-63da8a2a4b91.gif)
+![white_pawn](https://user-images.githubusercontent.com/90515435/141697127-e978c715-8cf3-4283-b78a-0557c77094d4.gif)
+![black_pawn](https://user-images.githubusercontent.com/90515435/141697132-c86e83a4-1073-4d6a-a594-10db0d725919.gif)
+![white_king](https://user-images.githubusercontent.com/90515435/141700963-19b7ad33-28bc-490f-9e4c-f9aaa86d5e46.gif)
+![black_king](https://user-images.githubusercontent.com/90515435/141700970-2a7bc674-d81b-4286-8c86-fe003680a273.gif)
+![white_queen](https://user-images.githubusercontent.com/90515435/141700974-07bd37d2-ba0e-4a9f-8475-cbf3a5c8d1a8.gif)
+![black_queen](https://user-images.githubusercontent.com/90515435/141700979-3c47806a-50e2-4ebe-ac2d-8c823feaebe5.gif)
+![white_castle](https://user-images.githubusercontent.com/90515435/141700284-b7b9d68e-139b-4a31-8faf-1a6bd6c37ad4.gif)
+![black_castle](https://user-images.githubusercontent.com/90515435/141700290-5d8c7c48-e525-4690-9dba-7d893c8ab91c.gif)
+
+### Second Iteration
 ```python
 import turtle
 window = turtle.Screen()
