@@ -68,16 +68,16 @@ This shows the how the would move for only one tile away.
 ### Second Iteration 
 The secon iteration came about as the old approach of using an array and using kind of like a long list was very confusing to code a use and is why i could only get part throuhg programming the pawn movement rules. However it lay the gorund work for the method i am using in the second iteration which use an array in that array and yes i know this sounds more complicated but this way i can use it to give the peice coordinates. This removes the annoyance of having a move to the front left be -7 in the array as well as me not knowing how i would detect the edges of the board.
 ```python
-board2=[['bc','.','.','bp','.','.','.','.'],
+board=[['bc','.','bc','bp','.','.','.','.'],
         ['.','.','.','.','.','.','.','.'],
         ['.','.','.','.','.','.','.','.'],
         ['.','.','.','.','.','.','.','.'],
-        ['wp','.','.','.','.','.','.','.'],
+        ['bp','.','.','.','.','.','.','.'],
         ['.','.','.','.','.','.','.','.'],
         ['.','.','.','.','.','.','.','.'],
         ['.','.','.','.','.','.','.','.']]
 
-position='00'
+position='20'
 possible_moves=[]
 def possible_moves(position):
     possible_moves_in=[]
@@ -87,25 +87,25 @@ def possible_moves(position):
         y_pos_pos=int(possible_position[1])
         x_pos_pos=int(possible_position[0])+int(position[0])
         
-        if board2[y_pos_pos][x_pos_pos] != '.':
-            if (str(board2[y_pos_pos][x_pos_pos]))[0]=='w':
-                print(board2[y_pos_pos][x_pos_pos]) 
+        if board[y_pos_pos][x_pos_pos] != '.':
+            if (str(board[y_pos_pos][x_pos_pos]))[0]=='w':
+                print(board[y_pos_pos][x_pos_pos]) 
                 possible_moves_in.append(possible_position)#entering possible move
                 break
             else: break
-        print(board2[y_pos_pos][x_pos_pos]) 
+        print(board[y_pos_pos][x_pos_pos]) 
         possible_moves_in.append(possible_position)#entering possible move
         
     for i in range(7):
-        possible_position='{}{}'.format(position[1],(i+1))
+        possible_position='{}{}'.format(position[0],(i+1))
         #print(possible_position)
-        if board2[int(possible_position[1])][int(possible_position[0])] != '.':
-            if (str(board2[int(possible_position[1])][int(possible_position[0])]))[0]=='w':
-                print(board2[int(possible_position[1])][int(possible_position[0])]) #y,x
+        if board[int(possible_position[1])][int(possible_position[0])] != '.':
+            if (str(board[int(possible_position[1])][int(possible_position[0])]))[0]=='w':
+                print(board[int(possible_position[1])][int(possible_position[0])]) #y,x
                 possible_moves_in.append(possible_position)#entering possible move
                 break
             else: break
-        print(board2[int(possible_position[1])][int(possible_position[0])]) #y,x
+        print(board[int(possible_position[1])][int(possible_position[0])]) #y,x
         possible_moves_in.append(possible_position)#entering possible move
     return possible_moves_in
     
