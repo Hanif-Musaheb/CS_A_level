@@ -189,6 +189,7 @@ output_possible_moves(possible_moves)
 ```
 
 (Use of the code above and the third iteration code)
+<Br>
 ![image](https://user-images.githubusercontent.com/90515435/145687879-b39b9cb5-6f48-4c7a-bef6-28109f8a372e.png)
 
 
