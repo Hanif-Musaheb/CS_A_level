@@ -159,55 +159,37 @@ def board_stripper_y(position):
     for i in range(8):
         column.append(board[i][int(position[0])])
     return column
+
+def output_possible_moves(possible_moves):
+    output_board=board
+    for i in range(len(possible_moves)):
+        output_board[int((possible_moves[i])[1])][int((possible_moves[i])[0])]='x'
+    print('{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n'.format(output_board[0],output_board[1],output_board[2],output_board[3]
+                                                    ,output_board[4],output_board[5],output_board[6],output_board[7]))
+    
     
 #print(possible_moves_for_axis('30','x'))
 board=[['bc','bp','.','.','.','.','.','.'],
         ['.','.','.','.','.','.','.','.'],
         ['.','.','.','.','.','.','.','.'],
         ['.','.','.','.','.','.','.','.'],
-        ['wp','bp','.','.','.','.','.','.'],
+        ['wp','bp','.','wp','bp','.','.','.'],
         ['.','.','.','.','.','.','.','.'],
         ['.','.','.','.','.','.','.','.'],
         ['.','.','.','.','.','.','.','.']]
 
 position='14'
 possible_moves=[]
-print(board_stripper_x(position))
-print(board_stripper_y(position))
+##print(board_stripper_x(position))
+##print(board_stripper_y(position))
 possible_moves+=possible_moves_for_axis(position,'x',board_stripper_x(position))
 possible_moves+=possible_moves_for_axis(position,'y',board_stripper_y(position))
 
-print(possible_moves)
+output_possible_moves(possible_moves)
 ```
-This code is for outputting via printing the possible moves of the castle.
-``` python
 
-a=['04', '24', '34', '44', '54', '64', '74', '13', '12', '11', '15', '16', '17']
-
-board=[['bc','bp','.','.','.','.','.','.'],
-        ['.','.','.','.','.','.','.','.'],
-        ['.','.','.','.','.','.','.','.'],
-        ['.','.','.','.','.','.','.','.'],
-        ['wp','bp','.','.','.','.','.','.'],
-        ['.','.','.','.','.','.','.','.'],
-        ['.','.','.','.','.','.','.','.'],
-        ['.','.','.','.','.','.','.','.']]
-
-for i in range(len(a)):
-    board[int((a[i])[1])][int((a[i])[0])]='x'
-
-
-print('{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n'.format(board[0],
-                                                board[1],
-                                                board[2],
-                                                board[3],
-                                                board[4],
-                                                board[5],
-                                                board[6],
-                                                board[7],))
-```
 (Use of the code above and the third iteration code)
-![image](https://user-images.githubusercontent.com/90515435/145687469-49acb857-9174-4793-814e-8ed33df7fb9a.png)
+![image](https://user-images.githubusercontent.com/90515435/145687879-b39b9cb5-6f48-4c7a-bef6-28109f8a372e.png)
 
 
 ## UI
