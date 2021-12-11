@@ -113,7 +113,7 @@ def possible_moves(position):
 print(possible_moves(position))
 ```
 creation of a function that looks at the tiles on the x axis and the y axis of the peice
-```
+``` python
 axis_of_board=['wc2','.','bc1','.','.','.','wp','.']
 possible_moves=[]
 #position='30'
