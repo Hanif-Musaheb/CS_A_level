@@ -170,6 +170,101 @@ def find_possible_moves_axis(axis,axis_of_move,position,possible_moves_position=
 
 print(find_possible_moves_axis(0,'x','30'))
 ```
+### Third Iteration
+I worked around 6hrs straight to improve the code to what it is now which can show all the possible moves for a castle. Although this may not sound like much it a major peice of the puzzle solved as now using the same code with a few minor tweaks i can get it to scan possible moves in a diagonal for bishop and queen and other peices should be easier like a king which is similar to a castle.
+
+``` python
+def position_axis_to_cord(axis_position,axis,other_axis_position):
+    if axis=='x':return '{}{}'.format(axis_position,other_axis_position)
+    elif axis=='y':return '{}{}'.format(other_axis_position,axis_position)
+    
+
+def possible_moves_for_axis(position,axis,axis_of_board):
+    possible_moves_for_axis=[]
+    if axis=='x':
+        position_on_axis=int(position[0])
+        other_axis_position=int(position[1])
+    elif axis=='y':
+        position_on_axis=int(position[1])
+        other_axis_position=int(position[0])
+
+        
+    for i in range(position_on_axis):
+        if axis_of_board[position_on_axis-i-1][0] != '.':
+            if axis_of_board[position_on_axis-i-1][0]=='w':
+                possible_moves_for_axis.append(position_axis_to_cord(position_on_axis-i-1,axis,other_axis_position))
+                break
+            else:break
+        possible_moves_for_axis.append(position_axis_to_cord(position_on_axis-i-1,axis,other_axis_position))
+        
+    for i in range(7-position_on_axis):
+        if axis_of_board[position_on_axis+i+1][0] != '.':
+            if axis_of_board[position_on_axis+i+1][0]=='w':
+                possible_moves_for_axis.append(position_axis_to_cord(position_on_axis+i+1,axis,other_axis_position))
+                break
+            else:break
+        possible_moves_for_axis.append(position_axis_to_cord(position_on_axis+i+1,axis,other_axis_position))
+
+    return possible_moves_for_axis
+
+def board_stripper_x(position):
+    return board[int(position[1])]
+
+def board_stripper_y(position):
+    column=[]
+    for i in range(8):
+        column.append(board[i][int(position[0])])
+    return column
+    
+#print(possible_moves_for_axis('30','x'))
+board=[['bc','bp','.','.','.','.','.','.'],
+        ['.','.','.','.','.','.','.','.'],
+        ['.','.','.','.','.','.','.','.'],
+        ['.','.','.','.','.','.','.','.'],
+        ['wp','bp','.','.','.','.','.','.'],
+        ['.','.','.','.','.','.','.','.'],
+        ['.','.','.','.','.','.','.','.'],
+        ['.','.','.','.','.','.','.','.']]
+
+position='14'
+possible_moves=[]
+print(board_stripper_x(position))
+print(board_stripper_y(position))
+possible_moves+=possible_moves_for_axis(position,'x',board_stripper_x(position))
+possible_moves+=possible_moves_for_axis(position,'y',board_stripper_y(position))
+
+print(possible_moves)
+```
+This code is for outputting via printing the possible moves of the castle.
+``` python
+
+a=['04', '24', '34', '44', '54', '64', '74', '13', '12', '11', '15', '16', '17']
+
+board=[['bc','bp','.','.','.','.','.','.'],
+        ['.','.','.','.','.','.','.','.'],
+        ['.','.','.','.','.','.','.','.'],
+        ['.','.','.','.','.','.','.','.'],
+        ['wp','bp','.','.','.','.','.','.'],
+        ['.','.','.','.','.','.','.','.'],
+        ['.','.','.','.','.','.','.','.'],
+        ['.','.','.','.','.','.','.','.']]
+
+for i in range(len(a)):
+    board[int((a[i])[1])][int((a[i])[0])]='x'
+
+
+print('{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n'.format(board[0],
+                                                board[1],
+                                                board[2],
+                                                board[3],
+                                                board[4],
+                                                board[5],
+                                                board[6],
+                                                board[7],))
+```
+(Use of the code above and the third iteration code)
+![image](https://user-images.githubusercontent.com/90515435/145687469-49acb857-9174-4793-814e-8ed33df7fb9a.png)
+
 
 ## UI
 ### First iteration
