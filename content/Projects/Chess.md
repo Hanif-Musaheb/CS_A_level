@@ -112,6 +112,64 @@ def possible_moves(position):
     
 print(possible_moves(position))
 ```
+creation of a function that looks at the tiles on the x axis and the y axis of the peice
+```
+axis_of_board=['wc2','.','bc1','.','.','.','wp','.']
+possible_moves=[]
+#position='30'
+#position_x=3
+##for i in range(8):
+##    #print(axis_of_board[i])
+##    possible_moves.append(axis_of_board[i])
+##    
+##print(possible_moves)
+
+##for i in range(position_x-1):
+##    print(axis_of_board[position_x-2-i])#to the left
+
+def possible_move_input(axis,a,b):#axis x,y,y_x(y=-x),yx(y=x)
+    if axis=='x':
+        #position='{}{}'.format(a,b)
+        return ('{}{}'.format(a,b))
+    elif axis=='y':
+        return ('{}{}'.format(b,a))
+        
+    
+    
+
+
+def find_possible_moves_axis(axis,axis_of_move,position,possible_moves_position=[]):#axis x=0 y=1
+    possible_moves_position=[]
+    position_on_axis=int(position[0])
+    #left of peice    
+    for i in range(position_on_axis-1):
+        if axis_of_board[position_on_axis-2-i][0] != '.':
+            if axis_of_board[position_on_axis-2-i][0]=='w':
+                    possible_moves.append(axis_of_board[position_on_axis-2-i])#entering possible move
+                    possible_moves_position.append(possible_move_input(axis_of_move,(position_on_axis-2-i),0))#'{}{}'.format(position_x,(position_x-2-i)))#***
+
+                    break
+            else: break
+        possible_moves.append(axis_of_board[position_on_axis-2-i])#entering possible move
+        possible_moves_position.append(possible_move_input(axis_of_move,(position_on_axis-2-i),0))#***
+
+        
+    #right of peice
+    for i in range(8-position_on_axis):
+        if axis_of_board[i+position_on_axis][0] != '.':
+            if axis_of_board[i+position_on_axis][0]=='w':
+                    possible_moves.append(axis_of_board[i+position_on_axis])#entering possible move
+                    possible_moves_position.append(possible_move_input(axis_of_move,(i+position_on_axis),0))#***
+                    break
+            else: break
+        possible_moves.append(axis_of_board[i+position_on_axis])#entering possible move
+        possible_moves_position.append(possible_move_input(axis_of_move,(i+position_on_axis),0))#***
+        
+    return possible_moves_position
+
+
+print(find_possible_moves_axis(0,'x','30'))
+```
 
 ## UI
 ### First iteration
