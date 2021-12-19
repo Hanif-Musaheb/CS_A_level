@@ -1,0 +1,154 @@
+board=[['bP','bp','.','.','.','.','.','.'],
+        ['.','.','.','.','.','.','.','.'],
+        ['.','.','bP','.','.','.','.','.'],
+        ['.','.','.','.','.','.','.','.'],
+        ['wp','bp','.','wp','bp','.','.','.'],
+        ['.','.','.','.','.','.','.','.'],
+        ['bc','.','.','.','.','.','.','.'],
+        ['.','.','.','.','.','.','.','.']]
+
+
+position='22'
+
+
+def start_pos_finder_for_yx(position):#a tool for board_stripper_yx
+    diagonal=[]
+    start_pos=position
+    while True:
+        if start_pos[0]=='0' or start_pos[1]=='7':
+            return start_pos
+        start_pos='{}{}'.format((int(start_pos[0])-1),int(start_pos[1])+1)
+        
+        
+def start_pos_finder_for_y_x(position):#a tool for board_stripper_y_x
+    diagonal=[]
+    start_pos=position
+    while True:
+        if start_pos[0]=='7' or start_pos[1]=='7':
+            return start_pos
+        start_pos='{}{}'.format((int(start_pos[0])+1),int(start_pos[1])+1)
+
+
+def board_stripper_yx(start_pos,position):
+    diagonal=[]
+    possible_moves=[]
+    start_pos=str(start_pos)
+    start_pos='{}{}'.format(int(start_pos[0]),int(start_pos[1]))
+    diagonal.append(start_pos)
+    
+    for i in range(int(start_pos[1])-int(start_pos[0])):
+        start_pos='{}{}'.format(int(start_pos[0])+1,int(start_pos[1])-1)
+        diagonal.append(start_pos)
+
+    for i in range(diagonal.index(position)):
+        if (board[int(diagonal[(diagonal.index(position))-i-1][0])][int(diagonal[(diagonal.index(position))-i-1][1])])[0][0] != '.':#int(diagonal[(diagonal.index(position))-i-1][0])
+            if (board[int(diagonal[(diagonal.index(position))-i-1][0])][int(diagonal[(diagonal.index(position))-i-1][1])])[0][0]=='w':
+                possible_moves.append(diagonal[diagonal.index(position)-i-1])
+                break
+            else:break
+        possible_moves.append(diagonal[diagonal.index(position)-i-1])
+        
+    for i in range(len(diagonal)-1-diagonal.index(position)):
+            if (board[int(diagonal[(diagonal.index(position))+i+1][0])][int(diagonal[(diagonal.index(position))+i+1][1])])[0][0] != '.':#int(diagonal[(diagonal.index(position))-i-1][0])
+                if (board[int(diagonal[(diagonal.index(position))+i+1][0])][int(diagonal[(diagonal.index(position))+i+1][1])])[0][0]=='w':
+                    possible_moves.append(diagonal[diagonal.index(position)+i+1])
+                    break
+                else:break
+            possible_moves.append(diagonal[diagonal.index(position)+i+1])
+    return possible_moves
+
+def board_stripper_y_x(start_pos,position):
+    diagonal=[]
+    possible_moves=[]
+    start_pos=str(start_pos)
+    start_pos='{}{}'.format(int(start_pos[0]),int(start_pos[1]))
+    diagonal.append(start_pos)
+    
+    for i in range(int(start_pos[1])-(7-int(start_pos[0]))):
+        start_pos='{}{}'.format(int(start_pos[0])-1,int(start_pos[1])-1)
+        diagonal.append(start_pos)
+
+    for i in range(diagonal.index(position)):
+        if (board[int(diagonal[(diagonal.index(position))-i-1][0])][int(diagonal[(diagonal.index(position))-i-1][1])])[0][0] != '.':#int(diagonal[(diagonal.index(position))-i-1][0])
+            if (board[int(diagonal[(diagonal.index(position))-i-1][0])][int(diagonal[(diagonal.index(position))-i-1][1])])[0][0]=='w':
+                possible_moves.append(diagonal[diagonal.index(position)-i-1])
+                break
+            else:break
+        possible_moves.append(diagonal[diagonal.index(position)-i-1])
+        
+    for i in range(len(diagonal)-1-diagonal.index(position)):
+        if (board[int(diagonal[(diagonal.index(position))+i+1][0])][int(diagonal[(diagonal.index(position))+i+1][1])])[0][0] != '.':#int(diagonal[(diagonal.index(position))-i-1][0])
+            if (board[int(diagonal[(diagonal.index(position))+i+1][0])][int(diagonal[(diagonal.index(position))+i+1][1])])[0][0]=='w':
+                possible_moves.append(diagonal[diagonal.index(position)+i+1])
+                break
+            else:break
+        possible_moves.append(diagonal[diagonal.index(position)+i+1])
+    return possible_moves
+
+def board_stripper_x(position):
+    return board[int(position[1])]
+
+def board_stripper_y(position):
+    column=[]
+    for i in range(8):
+        column.append(board[i][int(position[0])])
+    return column
+
+def position_axis_to_cord(axis_position,axis,other_axis_position):
+    if axis=='x':return '{}{}'.format(axis_position,other_axis_position)
+    elif axis=='y':return '{}{}'.format(other_axis_position,axis_position)
+    
+
+def possible_moves_for_axis(position,axis,axis_of_board):
+    possible_moves_for_axis=[]
+    if axis=='x':
+        position_on_axis=int(position[0])
+        other_axis_position=int(position[1])
+    elif axis=='y':
+        position_on_axis=int(position[1])
+        other_axis_position=int(position[0])
+
+        
+    for i in range(position_on_axis):
+        if axis_of_board[position_on_axis-i-1][0] != '.':
+            if axis_of_board[position_on_axis-i-1][0]=='w':
+                possible_moves_for_axis.append(position_axis_to_cord(position_on_axis-i-1,axis,other_axis_position))
+                break
+            else:break
+        possible_moves_for_axis.append(position_axis_to_cord(position_on_axis-i-1,axis,other_axis_position))
+        
+    for i in range(7-position_on_axis):
+        if axis_of_board[position_on_axis+i+1][0] != '.':
+            if axis_of_board[position_on_axis+i+1][0]=='w':
+                possible_moves_for_axis.append(position_axis_to_cord(position_on_axis+i+1,axis,other_axis_position))
+                break
+            else:break
+        possible_moves_for_axis.append(position_axis_to_cord(position_on_axis+i+1,axis,other_axis_position))
+
+    return possible_moves_for_axis
+
+def castle_possible_moves(position):
+    possible_moves=[]
+    possible_moves+=possible_moves_for_axis(position,'x',board_stripper_x(position))
+    possible_moves+=possible_moves_for_axis(position,'y',board_stripper_y(position))
+    return possible_moves
+
+
+def bishop_possible_moves(position):
+    possible_moves=[]
+    possible_moves+=board_stripper_yx(start_pos_finder_for_yx(position),position)
+    possible_moves+=board_stripper_y_x(start_pos_finder_for_y_x(position),position)
+    return possible_moves
+
+
+def output_possible_moves(possible_moves):
+    output_board=board
+##    print(len(possible_moves))
+    for i in range(len(possible_moves)):
+##        print(possible_moves[i])
+        output_board[int((possible_moves[i])[1])][int((possible_moves[i])[0])]='x'
+    print('{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n'.format(output_board[0],output_board[1],output_board[2],output_board[3]
+                                                    ,output_board[4],output_board[5],output_board[6],output_board[7]))
+    
+    
+output_possible_moves(castle_possible_moves(position))#board_stripper_yx(position)))
