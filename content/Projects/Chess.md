@@ -36,7 +36,9 @@ I worked around 6hrs straight to improve the code to what it is now which can sh
 ## UI
 ### First iteration
 (UI code)
+<Br>
 [First Iteration](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/Projects/chess%20files/ui%20first%20iteration.py)
+<Br>
 chess board is:
 
 ![chess_board](https://user-images.githubusercontent.com/90515435/138888602-5da74088-0051-490f-b819-83b5ea5823b7.gif)
