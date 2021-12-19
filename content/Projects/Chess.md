@@ -31,6 +31,7 @@ I worked around 6hrs straight to improve the code to what it is now which can sh
         
         
 [x5 (possible diagonal moves)](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/Projects/x5.py)
+[Bishop Possible Moves](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/Projects/chess%20files/Bishop%20Possible%20Moves.py)
 
 
 ## UI
