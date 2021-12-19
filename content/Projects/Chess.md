@@ -2,62 +2,9 @@
 So far i have been workig on the UI and the engine seperatly
 ## Chess Engine
 ### First Iteration
-```python
-        
-board=[['br1'],['bk1'],['bb1'],['bq'],['bK'],['bb2'],['bk2'],['br2'],
-    ['bp1'],['bp2'],['bp3'],['bp4'],['bp5'],['bp6'],['bp7'],['bp8'],
-    [],[],[],[],[],[],[],[],
-    [],[],[],[],[],[],[],[],
-    [],[],[],[],[],[],[],[],
-    [],[],[],[],[],[],[],[],
-    ['wp1'],['wp2'],['wp3'],['wp4'],['wp5'],['wp6'],['wp7'],['wp8'],
-    ['wr1'],['wk1'],['wb1'],['wq'],['wK'],['wb2'],['wk2'],['wr2']]
+[First Iteration](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/Projects/chess%20files/first%20iteration.py)
 
 
-
-def pawn_moves(position,color):
-    if (position in range(8,16))and color=='b':
-        return[position+8,position+16]
-    elif (position in range(48,56))and color=='w':
-        return[position-8,position-16]
-    elif color=='w':
-        return[position-8]
-    return[position+8]
-    
-
-def possible_moves(position):
-    possible_moves=[]
-    
-    color=''
-    color=board[position][0][0]
-    print(color)
-    
-    peice_type=''
-    peice_type=board[position][0][1]
-    print(peice_type)
-    
-    if peice_type=='p':
-        possible_moves+=pawn_moves(position,color)
-    
-    return possible_moves
-
-def show_possible_move(board,position):
-    board_possible_moves=board
-    possible_moves_=possible_moves(position)
-    for i in range(len(possible_moves_)):
-        board_possible_moves[possible_moves_[i]]+='x'
-    print('{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n'.format(board_possible_moves[0:8],
-                                                    board_possible_moves[8:16],
-                                                    board_possible_moves[16:24],
-                                                    board_possible_moves[24:32],
-                                                    board_possible_moves[32:40],
-                                                    board_possible_moves[40:48],
-                                                    board_possible_moves[48:56],
-                                                    board_possible_moves[56:64]))
-        
-    
-show_possible_move(board,8)
-```
 For movement i propose using a method by which you subtract or add to a peices place in an array
 ```
 [-9][-8][-7]
@@ -67,126 +14,16 @@ For movement i propose using a method by which you subtract or add to a peices p
 This shows the how the would move for only one tile away.
 ### Second Iteration 
 The secon iteration came about as the old approach of using an array and using kind of like a long list was very confusing to code a use and is why i could only get part throuhg programming the pawn movement rules. However it lay the gorund work for the method i am using in the second iteration which use an array in that array and yes i know this sounds more complicated but this way i can use it to give the peice coordinates. This removes the annoyance of having a move to the front left be -7 in the array as well as me not knowing how i would detect the edges of the board.
-```python
-board=[['bc','.','bc','bp','.','.','.','.'],
-        ['.','.','.','.','.','.','.','.'],
-        ['.','.','.','.','.','.','.','.'],
-        ['.','.','.','.','.','.','.','.'],
-        ['bp','.','.','.','.','.','.','.'],
-        ['.','.','.','.','.','.','.','.'],
-        ['.','.','.','.','.','.','.','.'],
-        ['.','.','.','.','.','.','.','.']]
 
-position='20'
-possible_moves=[]
-def possible_moves(position):
-    possible_moves_in=[]
-    for i in range(7):
-        possible_position='{}{}'.format((i+1),position[1])
+[Second Iteration](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/Projects/chess%20files/Second%20Iteration.py)
 
-        y_pos_pos=int(possible_position[1])
-        x_pos_pos=int(possible_position[0])+int(position[0])
-        
-        if board[y_pos_pos][x_pos_pos] != '.':
-            if (str(board[y_pos_pos][x_pos_pos]))[0]=='w':
-                print(board[y_pos_pos][x_pos_pos]) 
-                possible_moves_in.append(possible_position)#entering possible move
-                break
-            else: break
-        print(board[y_pos_pos][x_pos_pos]) 
-        possible_moves_in.append(possible_position)#entering possible move
-        
-    for i in range(7):
-        possible_position='{}{}'.format(position[0],(i+1))
-        #print(possible_position)
-        if board[int(possible_position[1])][int(possible_position[0])] != '.':
-            if (str(board[int(possible_position[1])][int(possible_position[0])]))[0]=='w':
-                print(board[int(possible_position[1])][int(possible_position[0])]) #y,x
-                possible_moves_in.append(possible_position)#entering possible move
-                break
-            else: break
-        print(board[int(possible_position[1])][int(possible_position[0])]) #y,x
-        possible_moves_in.append(possible_position)#entering possible move
-    return possible_moves_in
-    
-    
-print(possible_moves(position))
-```
 creation of a function that looks at the tiles on the x axis and the y axis of the peice
 
 ### Third Iteration
 I worked around 6hrs straight to improve the code to what it is now which can show all the possible moves for a castle. Although this may not sound like much it a major peice of the puzzle solved as now using the same code with a few minor tweaks i can get it to scan possible moves in a diagonal for bishop and queen and other peices should be easier like a king which is similar to a castle.
 
-``` python
-def position_axis_to_cord(axis_position,axis,other_axis_position):
-    if axis=='x':return '{}{}'.format(axis_position,other_axis_position)
-    elif axis=='y':return '{}{}'.format(other_axis_position,axis_position)
-    
+[Third Iteration](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/Projects/chess%20files/third%20Iteration.py)
 
-def possible_moves_for_axis(position,axis,axis_of_board):
-    possible_moves_for_axis=[]
-    if axis=='x':
-        position_on_axis=int(position[0])
-        other_axis_position=int(position[1])
-    elif axis=='y':
-        position_on_axis=int(position[1])
-        other_axis_position=int(position[0])
-
-        
-    for i in range(position_on_axis):
-        if axis_of_board[position_on_axis-i-1][0] != '.':
-            if axis_of_board[position_on_axis-i-1][0]=='w':
-                possible_moves_for_axis.append(position_axis_to_cord(position_on_axis-i-1,axis,other_axis_position))
-                break
-            else:break
-        possible_moves_for_axis.append(position_axis_to_cord(position_on_axis-i-1,axis,other_axis_position))
-        
-    for i in range(7-position_on_axis):
-        if axis_of_board[position_on_axis+i+1][0] != '.':
-            if axis_of_board[position_on_axis+i+1][0]=='w':
-                possible_moves_for_axis.append(position_axis_to_cord(position_on_axis+i+1,axis,other_axis_position))
-                break
-            else:break
-        possible_moves_for_axis.append(position_axis_to_cord(position_on_axis+i+1,axis,other_axis_position))
-
-    return possible_moves_for_axis
-
-def board_stripper_x(position):
-    return board[int(position[1])]
-
-def board_stripper_y(position):
-    column=[]
-    for i in range(8):
-        column.append(board[i][int(position[0])])
-    return column
-
-def output_possible_moves(possible_moves):
-    output_board=board
-    for i in range(len(possible_moves)):
-        output_board[int((possible_moves[i])[1])][int((possible_moves[i])[0])]='x'
-    print('{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n'.format(output_board[0],output_board[1],output_board[2],output_board[3]
-                                                    ,output_board[4],output_board[5],output_board[6],output_board[7]))
-    
-    
-#print(possible_moves_for_axis('30','x'))
-board=[['bc','bp','.','.','.','.','.','.'],
-        ['.','.','.','.','.','.','.','.'],
-        ['.','.','.','.','.','.','.','.'],
-        ['.','.','.','.','.','.','.','.'],
-        ['wp','bp','.','wp','bp','.','.','.'],
-        ['.','.','.','.','.','.','.','.'],
-        ['.','.','.','.','.','.','.','.'],
-        ['.','.','.','.','.','.','.','.']]
-
-position='14'
-possible_moves=[]
-##print(board_stripper_x(position))
-##print(board_stripper_y(position))
-possible_moves+=possible_moves_for_axis(position,'x',board_stripper_x(position))
-possible_moves+=possible_moves_for_axis(position,'y',board_stripper_y(position))
-
-output_possible_moves(possible_moves)
-```
 
 (Use of the code above and the third iteration code)
 <Br>
@@ -199,24 +36,7 @@ output_possible_moves(possible_moves)
 ## UI
 ### First iteration
 (UI code)
-```python
-import turtle
-window = turtle.Screen()
-window.title("chess")
-window.bgcolor('light grey')
-window.setup(width=800, height=800)
-window.tracer(0)
-
-window.addshape("chess_board.gif")
-load_bar= turtle.Turtle()
-load_bar.shape("chess_board.gif")
-load_bar.goto(0,0)
-load_bar.pu()
-
-while True:
-    window.update()
-
-```
+[First Iteration](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/Projects/chess%20files/ui%20first%20iteration.py)
 chess board is:
 
 ![chess_board](https://user-images.githubusercontent.com/90515435/138888602-5da74088-0051-490f-b819-83b5ea5823b7.gif)
@@ -234,197 +54,8 @@ chess board is:
 ![black_castle](https://user-images.githubusercontent.com/90515435/141700290-5d8c7c48-e525-4690-9dba-7d893c8ab91c.gif)
 
 ### Second Iteration
-```python
-import turtle
-window = turtle.Screen()
-window.title("chess")
-window.bgcolor('white')
-window.setup(width=800, height=800)
-window.tracer(0)
+[Second Iteration](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/Projects/chess%20files/ui%20second%20iteration.py)
 
-window.addshape("chess_board.gif")
-window.addshape("black_queen.gif")
-window.addshape("white_queen.gif")
-window.addshape("black_king.gif")
-window.addshape("white_king.gif")
-window.addshape("white_queen.gif")
-window.addshape("white_rook.gif")
-window.addshape("black_rook.gif")
-window.addshape("white_castle.gif")            
-window.addshape("black_castle.gif")
-window.addshape("black_horse.gif")
-window.addshape("white_horse.gif")
-window.addshape("black_pawn.gif")
-window.addshape("white_pawn.gif")
-
-
-board= turtle.Turtle()
-board.shape("chess_board.gif")
-board.goto(0,0)
-board.pu()
-
-
-wpawn1=turtle.Turtle()
-wpawn1.shape("white_pawn.gif")
-wpawn1.pu()
-wpawn1.goto(-40,-200)
-
-wpawn2=wpawn1.clone()
-wpawn2.goto(-120,-200)
-wpawn3=wpawn1.clone()
-wpawn3.goto(-200,-200)
-wpawn4=wpawn1.clone()
-wpawn4.goto(-280,-200)
-wpawn5=wpawn1.clone()
-wpawn5.goto(40,-200)
-wpawn6=wpawn1.clone()
-wpawn6.goto(120,-200)
-wpawn7=wpawn1.clone()
-wpawn7.goto(200,-200)
-wpawn8=wpawn1.clone()
-wpawn8.goto(280,-200)
-
-wcastle1=turtle.Turtle()
-wcastle1.shape("white_castle.gif")
-wcastle1.pu()
-wcastle1.goto(-280,-280)
-
-wcastle2=wcastle1.clone()
-wcastle2.goto(280,-280)
-
-wrook1=turtle.Turtle()
-wrook1.shape("white_rook.gif")
-wrook1.pu()
-wrook1.goto(-120,-280)
-
-wrook2=wrook1.clone()
-wrook2.goto(120,-280)
-
-whorse1=turtle.Turtle()
-whorse1.shape("white_horse.gif")
-whorse1.pu()
-whorse1.goto(-200,-280)
-
-whorse2=whorse1.clone()
-whorse2.goto(200,-280)
-
-wqueen=turtle.Turtle()
-wqueen.shape("white_queen.gif")
-wqueen.pu()
-wqueen.goto(-40,-280)
-
-wking=turtle.Turtle()
-wking.shape("white_king.gif")
-wking.pu()
-wking.goto(40,-280)
-
-
-####
-
-bpawn1=turtle.Turtle()
-bpawn1.shape("black_pawn.gif")
-bpawn1.pu()
-bpawn1.goto(-40,200)
-
-bpawn2=bpawn1.clone()
-bpawn2.goto(-120,200)
-bpawn3=bpawn1.clone()
-bpawn3.goto(-200,200)
-bpawn4=bpawn1.clone()
-bpawn4.goto(-280,200)
-bpawn5=bpawn1.clone()
-bpawn5.goto(40,200)
-bpawn6=bpawn1.clone()
-bpawn6.goto(120,200)
-bpawn7=bpawn1.clone()
-bpawn7.goto(200,200)
-bpawn8=bpawn1.clone()
-bpawn8.goto(280,200)
-
-bcastle1=turtle.Turtle()
-bcastle1.shape("black_castle.gif")
-bcastle1.pu()
-bcastle1.goto(-280,280)
-
-bcastle2=bcastle1.clone()
-bcastle2.goto(280,280)
-
-brook1=turtle.Turtle()
-brook1.shape("black_rook.gif")
-brook1.pu()
-brook1.goto(-120,280)
-
-brook2=brook1.clone()
-brook2.goto(120,280)
-
-bhorse1=turtle.Turtle()
-bhorse1.shape("black_horse.gif")
-bhorse1.pu()
-bhorse1.goto(-200,280)
-
-bhorse2=bhorse1.clone()
-bhorse2.goto(200,280)
-
-bqueen=turtle.Turtle()
-bqueen.shape("black_queen.gif")
-bqueen.pu()
-bqueen.goto(-40,280)
-
-bking=turtle.Turtle()
-bking.shape("black_king.gif")
-bking.pu()
-bking.goto(40,280)
-
-
-
-
-window.listen()
-wpawn1.ondrag(wpawn1.goto)
-wpawn2.ondrag(wpawn2.goto)
-wpawn3.ondrag(wpawn3.goto)
-wpawn4.ondrag(wpawn4.goto)
-wpawn5.ondrag(wpawn5.goto)
-wpawn6.ondrag(wpawn6.goto)
-wpawn7.ondrag(wpawn7.goto)
-wpawn8.ondrag(wpawn8.goto)
-
-wcastle1.ondrag(wcastle1.goto)
-wcastle2.ondrag(wcastle2.goto)
-wrook1.ondrag(wrook1.goto)
-wrook2.ondrag(wrook2.goto)
-whorse1.ondrag(whorse1.goto)
-whorse2.ondrag(whorse2.goto)
-wqueen.ondrag(wqueen.goto)
-wking.ondrag(wking.goto)
-
-####
-bpawn1.ondrag(bpawn1.goto)
-bpawn2.ondrag(bpawn2.goto)
-bpawn3.ondrag(bpawn3.goto)
-bpawn4.ondrag(bpawn4.goto)
-bpawn5.ondrag(bpawn5.goto)
-bpawn6.ondrag(bpawn6.goto)
-bpawn7.ondrag(bpawn7.goto)
-bpawn8.ondrag(bpawn8.goto)
-
-bcastle1.ondrag(bcastle1.goto)
-bcastle2.ondrag(bcastle2.goto)
-brook1.ondrag(brook1.goto)
-brook2.ondrag(brook2.goto)
-bhorse1.ondrag(bhorse1.goto)
-bhorse2.ondrag(bhorse2.goto)
-bqueen.ondrag(bqueen.goto)
-bking.ondrag(bking.goto)
-
-def kill_peice():
-    print('!')
-
-window.onclick(kill_peice())
-
-while True:
-    window.update()
-
-```
 (evidence of it working)
 ![image](https://user-images.githubusercontent.com/90515435/142595436-9451735d-aee1-4cc7-8533-9f7558e69d20.png)
 
