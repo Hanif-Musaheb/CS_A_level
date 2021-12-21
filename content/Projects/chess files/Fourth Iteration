@@ -1,6 +1,6 @@
 board=[['bk','.','.','.','bp','.','.','.'],
         ['.','.','.','.','.','.','.','.'],
-        ['.','.','.','.','.','.','.','.'],
+        ['bh','.','.','.','.','.','.','.'],
         ['.','.','.','.','.','.','.','.'],
         ['wp','wp','bK','wp','bp','.','.','.'],
         ['.','.','.','.','.','.','.','.'],
@@ -8,7 +8,7 @@ board=[['bk','.','.','.','bp','.','.','.'],
         ['.','.','.','.','.','.','.','.']]
 
 
-position='24'
+position='02'
 
 
 def start_pos_finder_for_yx(position):#a tool for board_stripper_yx
@@ -158,7 +158,16 @@ def king_possible_moves(position):
                 possible_moves.append(possible_move)
     return possible_moves
 
-
+def horse_possible_moves(position):
+    possible_moves=[]
+    knight_move_relative=[[1,2],[2,1],  [-1,2],[-2,1],  [1,-2],[2,-1],  [-1,-2],[-2,-1]]
+    for i in range(8):
+        possible_move='{}{}'.format((int(position[0])+knight_move_relative[i][0]),int(position[1])+knight_move_relative[i][1])
+        if (possible_move[0] not in ['-','8','9']) and (possible_move[1] not in ['-','8','9']):
+            if board[int(possible_move[1])][int(possible_move[0])][0] in ['.','w']:#remember y and then x
+                possible_moves.append(possible_move)
+    return possible_moves
+    
     
     
 
@@ -174,4 +183,4 @@ def output_possible_moves(possible_moves):
                                                     ,output_board[4],output_board[5],output_board[6],output_board[7]))
     
     
-output_possible_moves(king_possible_moves(position))#board_stripper_yx(position)))
+output_possible_moves(horse_possible_moves(position))#board_stripper_yx(position)))
