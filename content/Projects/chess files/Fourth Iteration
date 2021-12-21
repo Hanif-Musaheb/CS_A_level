@@ -1,14 +1,14 @@
-board=[['bP','bp','.','.','.','.','.','.'],
+board=[['bk','.','.','.','bp','.','.','.'],
         ['.','.','.','.','.','.','.','.'],
-        ['.','.','bP','.','.','.','.','.'],
         ['.','.','.','.','.','.','.','.'],
-        ['wp','bp','.','wp','bp','.','.','.'],
+        ['.','.','.','.','.','.','.','.'],
+        ['wp','wp','bK','wp','bp','.','.','.'],
         ['.','.','.','.','.','.','.','.'],
         ['bc','.','.','.','.','.','.','.'],
         ['.','.','.','.','.','.','.','.']]
 
 
-position='22'
+position='24'
 
 
 def start_pos_finder_for_yx(position):#a tool for board_stripper_yx
@@ -140,6 +140,29 @@ def bishop_possible_moves(position):
     possible_moves+=board_stripper_y_x(start_pos_finder_for_y_x(position),position)
     return possible_moves
 
+def queen_possible_moves(position):
+    possible_moves=[]
+    possible_moves+=possible_moves_for_axis(position,'x',board_stripper_x(position))
+    possible_moves+=possible_moves_for_axis(position,'y',board_stripper_y(position))
+    possible_moves+=board_stripper_yx(start_pos_finder_for_yx(position),position)
+    possible_moves+=board_stripper_y_x(start_pos_finder_for_y_x(position),position)
+    return possible_moves
+
+def king_possible_moves(position):
+    possible_moves=[]
+    king_move_relative=[[-1,0],[1,0],[-1,1],[0,1],[1,1],[-1,-1],[0,-1],[1,-1]]
+    for i in range(8):
+        possible_move='{}{}'.format((int(position[0])+king_move_relative[i][0]),int(position[1])+king_move_relative[i][1])
+        if (possible_move[0] not in ['-','8']) and (possible_move[1] not in ['-','8']):
+            if board[int(possible_move[1])][int(possible_move[0])][0] in ['.','w']:#remember y and then x
+                possible_moves.append(possible_move)
+    return possible_moves
+
+
+    
+    
+
+
 
 def output_possible_moves(possible_moves):
     output_board=board
@@ -151,4 +174,4 @@ def output_possible_moves(possible_moves):
                                                     ,output_board[4],output_board[5],output_board[6],output_board[7]))
     
     
-output_possible_moves(castle_possible_moves(position))#board_stripper_yx(position)))
+output_possible_moves(king_possible_moves(position))#board_stripper_yx(position)))
