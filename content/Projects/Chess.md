@@ -49,6 +49,7 @@ w/bb - white/black bishop
 w/bq - white/black queen
 w/bk - white/black king
 ```
+Next i guess i should create an algorithm to check whether or not the king is in check.
       
 
    
