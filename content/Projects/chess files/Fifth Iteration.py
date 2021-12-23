@@ -215,21 +215,6 @@ board=[['bc','bh','bb','bq','bk','bc','bh','bb'],
         ['wp','wp','wp','wp','wp','wp','wp','wp'],
         ['wc','wh','wb','wq','wk','wb','wh','wc']]    
 
-def user_input():
-    peice_position=str(input('peice position?'))
-    if (int(peice_position[0]) in range(0,7)) and (int(peice_position[1]) in range(0,7)) and (len(peice_position)==2):
-        if board[int(peice_position[1])][int(peice_position[0])]=='.':
-            user_input()
-        move_position=str(input('move position'))
-        if (int(move_position[0]) in range(0,7)) and (int(move_position[1]) in range(0,7)) and (len(move_position)==2):pass
-        else:user_input()
-    else:user_input()
-    print(peice_possible_moves(peice_position,enemy_color_finder(peice_position)))
-    if move_position in peice_possible_moves(peice_position,enemy_color_finder(peice_position)):
-        board[int(move_position[1])][int(move_position[0])]=board[int(peice_position[1])][int(peice_position[0])]
-        board[int(peice_position[1])][int(peice_position[0])]='.'          
-        
-    return
 
 def user_input():
     while True:
