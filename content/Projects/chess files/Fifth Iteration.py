@@ -127,12 +127,12 @@ def bishop_possible_moves(position,enemy_color):
     possible_moves+=board_stripper_y_x(start_pos_finder_for_y_x(position),position,enemy_color)
     return possible_moves
 
-def queen_possible_moves(position):
+def queen_possible_moves(position,enemy_color):
     possible_moves=[]
-    possible_moves+=possible_moves_for_axis(position,'x',board_stripper_x(position))
-    possible_moves+=possible_moves_for_axis(position,'y',board_stripper_y(position))
-    possible_moves+=board_stripper_yx(start_pos_finder_for_yx(position),position)
-    possible_moves+=board_stripper_y_x(start_pos_finder_for_y_x(position),position)
+    possible_moves+=possible_moves_for_axis(position,'x',board_stripper_x(position),enemy_color)
+    possible_moves+=possible_moves_for_axis(position,'y',board_stripper_y(position),enemy_color)
+    possible_moves+=board_stripper_yx(start_pos_finder_for_yx(position),position,enemy_color)
+    possible_moves+=board_stripper_y_x(start_pos_finder_for_y_x(position),position,enemy_color)
     return possible_moves
 
 def king_possible_moves(position,enemy_color):
@@ -184,12 +184,35 @@ def enemy_color_finder(position):
         return 'b'
     elif color=='b':
         return 'w'
+    
+def peice_possible_moves(position,enemy_color):
+    if board[int(position[1])][int(position[0])][0] != '.':
+        peice=board[int(position[1])][int(position[0])][1]
+        if peice=='p':
+            return pawn_possible_moves(position,enemy_color)
+        elif peice=='c':
+            return castle_possible_moves(position,enemy_color)
+        elif peice=='h':
+            return horse_possible_moves(position,enemy_color)
+        elif peice=='b':
+            return bishop_possible_moves(position,enemy_color)
+        elif peice=='q':
+            return queen_possible_moves(position,enemy_color)
+        elif peice=='k':
+            return king_possible_moves(position,enemy_color)
+        else:
+            print('[ERROR] not a peice')
+    else:
+        print('[ERROR] position empty')
+        
+    
+    
 
 def output_possible_moves(possible_moves):
+    if possible_moves==None:
+        return
     output_board=board
-##    print(len(possible_moves))
     for i in range(len(possible_moves)):
-##        print(possible_moves[i])
         output_board[int((possible_moves[i])[1])][int((possible_moves[i])[0])]='x'
     print('{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n'.format(output_board[0],output_board[1],output_board[2],output_board[3]
                                                     ,output_board[4],output_board[5],output_board[6],output_board[7]))
@@ -200,11 +223,11 @@ board=[['.','.','.','.','.','.','.','.'],
         ['bp','wp','.','.','.','.','.','.'],
         ['bh','wh','wp','.','.','.','.','.'],
         ['.','.','bp','.','.','.','.','.'],
-        ['wp','wp','bK','wp','bp','.','.','.'],
+        ['wp','wp','wk','wp','bp','.','.','.'],
         ['.','.','.','.','.','.','.','.'],
         ['bb','.','.','.','.','.','.','.'],
         ['.','.','.','.','.','.','.','wb']]    
 
 
-position='01'
-output_possible_moves(pawn_possible_moves(position,enemy_color_finder(position)))#board_stripper_yx(position)))
+position='24'
+output_possible_moves(peice_possible_moves(position,enemy_color_finder(position)))#board_stripper_yx(position)))
