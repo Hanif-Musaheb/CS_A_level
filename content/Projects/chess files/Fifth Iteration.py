@@ -1,3 +1,5 @@
+import random
+
 def start_pos_finder_for_yx(position):#a tool for board_stripper_yx
     diagonal=[]
     start_pos=position
@@ -6,7 +8,6 @@ def start_pos_finder_for_yx(position):#a tool for board_stripper_yx
             return start_pos
         start_pos='{}{}'.format((int(start_pos[0])-1),int(start_pos[1])+1)
         
-        
 def start_pos_finder_for_y_x(position):#a tool for board_stripper_y_x
     diagonal=[]
     start_pos=position
@@ -14,7 +15,6 @@ def start_pos_finder_for_y_x(position):#a tool for board_stripper_y_x
         if start_pos[0]=='7' or start_pos[1]=='7':
             return start_pos
         start_pos='{}{}'.format((int(start_pos[0])+1),int(start_pos[1])+1)
-
 
 def board_stripper_yx(start_pos,position,enemy_color):
     diagonal=[]
@@ -85,7 +85,6 @@ def position_axis_to_cord(axis_position,axis,other_axis_position):
     if axis=='x':return '{}{}'.format(axis_position,other_axis_position)
     elif axis=='y':return '{}{}'.format(other_axis_position,axis_position)
     
-
 def possible_moves_for_axis(position,axis,axis_of_board,enemy_color):
     possible_moves_for_axis=[]
     if axis=='x':
@@ -95,7 +94,6 @@ def possible_moves_for_axis(position,axis,axis_of_board,enemy_color):
         position_on_axis=int(position[1])
         other_axis_position=int(position[0])
 
-        
     for i in range(position_on_axis):
         if axis_of_board[position_on_axis-i-1][0] != '.':
             if axis_of_board[position_on_axis-i-1][0]==enemy_color:
@@ -111,7 +109,6 @@ def possible_moves_for_axis(position,axis,axis_of_board,enemy_color):
                 break
             else:break
         possible_moves_for_axis.append(position_axis_to_cord(position_on_axis+i+1,axis,other_axis_position))
-
     return possible_moves_for_axis
 
 def castle_possible_moves(position,enemy_color):
@@ -119,7 +116,6 @@ def castle_possible_moves(position,enemy_color):
     possible_moves+=possible_moves_for_axis(position,'x',board_stripper_x(position),enemy_color)
     possible_moves+=possible_moves_for_axis(position,'y',board_stripper_y(position),enemy_color)
     return possible_moves
-
 
 def bishop_possible_moves(position,enemy_color):
     possible_moves=[]
@@ -155,14 +151,11 @@ def horse_possible_moves(position,enemy_color):
                 possible_moves.append(possible_move)
     return possible_moves
     
-    
 def pawn_possible_moves(position,enemy_color):
     color = board[int(position[1])][int(position[0])][0]
     possible_moves=[]
-    if color=='b':
-        direction=1
-    elif color=='w':
-        direction=-1
+    if color=='b':direction=1
+    elif color=='w':direction=-1
     
     possible_move='{}{}'.format(int(position[0]),int(position[1])+direction)
     if board[int(possible_move[1])][int(possible_move[0])][0]=='.':
@@ -170,10 +163,10 @@ def pawn_possible_moves(position,enemy_color):
                 possible_moves.append(possible_move)
                 possible_move='{}{}'.format(int(position[0]),int(position[1])+direction*2)
         possible_moves.append(possible_move)
-    if board[int(position[1])+1][int(position[0])+1][0]==enemy_color and position[0]!='7':
+    if position[0]!='7' and board[int(position[1])+1][int(position[0])+1][0]==enemy_color:
         possible_move='{}{}'.format(int(position[0])+1,int(position[1])+1)
         possible_moves.append(possible_move)
-    if board[int(position[1])+1][int(position[0])-1][0]==enemy_color and position[0]!='0':
+    if position[0]!='0' and board[int(position[1])+1][int(position[0])-1][0]==enemy_color:
         possible_move='{}{}'.format(int(position[0])-1,int(position[1])+1)
         possible_moves.append(possible_move)
     return possible_moves
@@ -204,7 +197,6 @@ def is_king_checked(kings_position):#ineffecient
                 if kings_position in peice_possible_moves('{}{}'.format(j,i),enemy_color_finder('{}{}'.format(j,i))):return True
     return False
 
-
 def output_possible_moves(possible_moves):
     if possible_moves==None:return
     output_board=[]
@@ -214,19 +206,61 @@ def output_possible_moves(possible_moves):
     print('{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n'.format(output_board[0],output_board[1],output_board[2],output_board[3]
                                                     ,output_board[4],output_board[5],output_board[6],output_board[7]))
     
-
-
-board=[['.','.','.','.','.','.','.','.'],
-        ['bp','wp','.','.','.','.','.','.'],
-        ['bh','wh','wp','.','.','.','.','.'],
-        ['.','.','bp','.','.','.','.','.'],
-        ['wp','wp','wk','wp','bp','.','.','.'],
+board=[['bc','bh','bb','bq','bk','bc','bh','bb'],
+        ['bp','bp','bp','bp','bp','bp','bp','bp'],
         ['.','.','.','.','.','.','.','.'],
-        ['bc','.','.','.','.','.','.','.'],
-        ['.','.','.','.','.','.','.','wb']]    
+        ['.','.','.','.','.','.','.','.'],
+        ['.','.','.','.','.','.','.','.'],
+        ['.','.','.','.','.','.','.','.'],
+        ['wp','wp','wp','wp','wp','wp','wp','wp'],
+        ['wc','wh','wb','wq','wk','wb','wh','wc']]    
 
+def user_input():
+    peice_position=str(input('peice position?'))
+    if (int(peice_position[0]) in range(0,7)) and (int(peice_position[1]) in range(0,7)) and (len(peice_position)==2):
+        if board[int(peice_position[1])][int(peice_position[0])]=='.':
+            user_input()
+        move_position=str(input('move position'))
+        if (int(move_position[0]) in range(0,7)) and (int(move_position[1]) in range(0,7)) and (len(move_position)==2):pass
+        else:user_input()
+    else:user_input()
+    print(peice_possible_moves(peice_position,enemy_color_finder(peice_position)))
+    if move_position in peice_possible_moves(peice_position,enemy_color_finder(peice_position)):
+        board[int(move_position[1])][int(move_position[0])]=board[int(peice_position[1])][int(peice_position[0])]
+        board[int(peice_position[1])][int(peice_position[0])]='.'          
+        
+    return
 
-position='24'
-output_possible_moves(peice_possible_moves(position,enemy_color_finder(position)))
-print(is_king_checked(position))
+def user_input():
+    while True:
+        try:
+            peice_position=str(input('peice position?'))
+            if (int(peice_position[0]) in range(0,7)) and (int(peice_position[1]) in range(0,7)) and (len(peice_position)==2):
+                print(1)
+                if board[int(peice_position[1])][int(peice_position[0])]!='.':
+                    print(2)
+                    move_position=str(input('move position'))
+                    if (int(move_position[0]) in range(0,7)) and (int(move_position[1]) in range(0,7)) and (len(move_position)==2):
+                        if move_position in peice_possible_moves(peice_position,enemy_color_finder(peice_position)):
+                            board[int(move_position[1])][int(move_position[0])]=board[int(peice_position[1])][int(peice_position[0])]
+                            board[int(peice_position[1])][int(peice_position[0])]='.'
+##                            print(board)
+                            return
+            print('incorrect input')
+        except:
+            print('incorrect input')
+    
+    
+    
+while True:
+    user_input()
+    print('{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n'.format(board[0],board[1],board[2],board[3],board[4],board[5],board[6],board[7]))
+
+    
+    
+    
+    
+    
+##output_possible_moves(peice_possible_moves(position,enemy_color_finder(position)))
+##is_king_checked(position)
 
