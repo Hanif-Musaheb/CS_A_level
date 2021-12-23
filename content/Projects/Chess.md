@@ -50,7 +50,12 @@ w/bq - white/black queen
 w/bk - white/black king
 ```
 Next i guess i should create an algorithm to check whether or not the king is in check.
-      
+<Br>
+This lead me onto a bug that was very confusing as i had no idea what pointers were and now that i know how to use ```id()``` and ```list()``` so it took a while to understand that all list have different places in the RAM even lists inside lists. Solved the pointers problem  ```for i in range(8):output_board.append(list(board[i]))```
+<Br>
+<Br>
+I realised an end to iteration 5 it will be complete when i can get the computer to play against me randomly but legally.
+    
 
    
 
