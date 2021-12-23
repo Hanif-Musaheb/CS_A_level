@@ -188,30 +188,27 @@ def enemy_color_finder(position):
 def peice_possible_moves(position,enemy_color):
     if board[int(position[1])][int(position[0])][0] != '.':
         peice=board[int(position[1])][int(position[0])][1]
-        if peice=='p':
-            return pawn_possible_moves(position,enemy_color)
-        elif peice=='c':
-            return castle_possible_moves(position,enemy_color)
-        elif peice=='h':
-            return horse_possible_moves(position,enemy_color)
-        elif peice=='b':
-            return bishop_possible_moves(position,enemy_color)
-        elif peice=='q':
-            return queen_possible_moves(position,enemy_color)
-        elif peice=='k':
-            return king_possible_moves(position,enemy_color)
-        else:
-            print('[ERROR] not a peice')
-    else:
-        print('[ERROR] position empty')
-        
+        if peice=='p':return pawn_possible_moves(position,enemy_color)
+        elif peice=='c':return castle_possible_moves(position,enemy_color)
+        elif peice=='h':return horse_possible_moves(position,enemy_color)
+        elif peice=='b':return bishop_possible_moves(position,enemy_color)
+        elif peice=='q':return queen_possible_moves(position,enemy_color)
+        elif peice=='k':return king_possible_moves(position,enemy_color)
+        else:print('[ERROR] not a peice')
+    else:print('[ERROR] position empty')
     
-    
+def is_king_checked(kings_position):#ineffecient
+    for i in range(8):
+        for j in range(8):
+            if board[i][j]!='.':
+                if kings_position in peice_possible_moves('{}{}'.format(j,i),enemy_color_finder('{}{}'.format(j,i))):return True
+    return False
+
 
 def output_possible_moves(possible_moves):
-    if possible_moves==None:
-        return
-    output_board=board
+    if possible_moves==None:return
+    output_board=[]
+    for i in range(8):output_board.append(list(board[i]))
     for i in range(len(possible_moves)):
         output_board[int((possible_moves[i])[1])][int((possible_moves[i])[0])]='x'
     print('{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n'.format(output_board[0],output_board[1],output_board[2],output_board[3]
@@ -225,9 +222,11 @@ board=[['.','.','.','.','.','.','.','.'],
         ['.','.','bp','.','.','.','.','.'],
         ['wp','wp','wk','wp','bp','.','.','.'],
         ['.','.','.','.','.','.','.','.'],
-        ['bb','.','.','.','.','.','.','.'],
+        ['bc','.','.','.','.','.','.','.'],
         ['.','.','.','.','.','.','.','wb']]    
 
 
 position='24'
-output_possible_moves(peice_possible_moves(position,enemy_color_finder(position)))#board_stripper_yx(position)))
+output_possible_moves(peice_possible_moves(position,enemy_color_finder(position)))
+print(is_king_checked(position))
+
