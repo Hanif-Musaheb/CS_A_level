@@ -55,6 +55,9 @@ This lead me onto a bug that was very confusing as i had no idea what pointers w
 <Br>
 <Br>
 I realised an end to iteration 5 it will be complete when i can get the computer to play against me randomly but legally.
+24/12/21: Very close to ending iteration 5 now i have got the computer to play against me legally and randomly which was really good idea as it exposed a lot of bugs in my program one of which was very annoying to get rid of but i rewrote the diagonal move section so that it works now. In iteration 6 or whatever i call it since it will be combining my UI code with my engine i should be able to flush out any of the remaining bugs in the engine as it will be a lot easier to see whats happening heres what i can see now.
+        <img width="344" alt="image" src="https://user-images.githubusercontent.com/90515435/147374150-22d9ed40-4b02-4e4c-a2e8-f50c1c1068a9.png">
+ The last parts of iteration 5 will be implementing the checking code i have already made, checkmate and a mechanic that allows the user to change the pawn into a queen, horse, bishop or castle.
     
 
    
