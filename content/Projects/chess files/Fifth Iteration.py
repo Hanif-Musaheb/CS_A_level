@@ -46,6 +46,8 @@ def board_stripper_yx(start_pos,position,enemy_color):
         possible_moves.append(diagonal[position_on_axis+i+1])
     return possible_moves
 
+    
+
 def board_stripper_y_x(start_pos,position,enemy_color):
     diagonal=[]
     possible_moves=[]
@@ -193,12 +195,23 @@ def peice_possible_moves(position,enemy_color):
         elif peice=='k':return king_possible_moves(position,enemy_color)
         else:print('[ERROR] not a peice')
     else:print('[ERROR] position empty')
+
+def find_kings_position(color):
+    for i in range(8):
+        for j in range(8):
+            if board[i][j]=='{}{}'.format(color,'k'):
+                return '{}{}'.format(j,i)
+                
     
-def is_king_checked(kings_position):#ineffecient
+def is_king_checked(color):#ineffecient
+    kings_position=find_kings_position(color)
     for i in range(8):
         for j in range(8):
             if board[i][j]!='.':
-                if kings_position in peice_possible_moves('{}{}'.format(j,i),enemy_color_finder('{}{}'.format(j,i))):return True
+                if kings_position in peice_possible_moves('{}{}'.format(j,i),enemy_color_finder('{}{}'.format(j,i))):
+                    if color=='w':print('{} king checked'.format('white'))
+                    elif color=='b':print('{} king checked'.format('black'))
+                    return True
     return False
 
 def output_possible_moves(possible_moves):
@@ -253,9 +266,10 @@ def random_computer_output(color):
     board[int(peice_position[1])][int(peice_position[0])]='.'
     
 while True:
+    is_king_checked('w')
+    is_king_checked('b')
     user_input('w')
     print('{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n'.format(board[0],board[1],board[2],board[3],board[4],board[5],board[6],board[7]))
     random_computer_output('b')
     print('{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n'.format(board[0],board[1],board[2],board[3],board[4],board[5],board[6],board[7]))
-    ##is_king_checked(position)
 
