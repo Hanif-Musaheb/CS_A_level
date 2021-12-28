@@ -137,44 +137,80 @@ bking=turtle.Turtle()
 bking.shape("black_king.gif")
 bking.pu()
 bking.goto(40,280)
-    
-##window.listen()
-##
-##wpawn1.ondrag(wpawn1.goto)
-##wpawn2.ondrag(wpawn2.goto)
-##wpawn3.ondrag(wpawn3.goto)
-##wpawn4.ondrag(wpawn4.goto)
-##wpawn5.ondrag(wpawn5.goto)
-##wpawn6.ondrag(wpawn6.goto)
-##wpawn7.ondrag(wpawn7.goto)
-##wpawn8.ondrag(wpawn8.goto)
-##
-##wcastle1.ondrag(wcastle1.goto)
-##wcastle2.ondrag(wcastle2.goto)
-##wbishop1.ondrag(wbishop1.goto)
-##wbishop2.ondrag(wbishop2.goto)
-##whorse1.ondrag(whorse1.goto)
-##whorse2.ondrag(whorse2.goto)
-##wqueen.ondrag(wqueen.goto)
-##wking.ondrag(wking.goto)
-######
-##bpawn1.ondrag(bpawn1.goto)
-##bpawn2.ondrag(bpawn2.goto)
-##bpawn3.ondrag(bpawn3.goto)
-##bpawn4.ondrag(bpawn4.goto)
-##bpawn5.ondrag(bpawn5.goto)
-##bpawn6.ondrag(bpawn6.goto)
-##bpawn7.ondrag(bpawn7.goto)
-##bpawn8.ondrag(bpawn8.goto)
-##
-##bcastle1.ondrag(bcastle1.goto)
-##bcastle2.ondrag(bcastle2.goto)
-##bbishop1.ondrag(bbishop1.goto)
-##bbishop2.ondrag(bbishop2.goto)
-##bhorse1.ondrag(bhorse1.goto)
-##bhorse2.ondrag(bhorse2.goto)
-##bqueen.ondrag(bqueen.goto)
-##bking.ondrag(bking.goto)
+
+user_input_pos=[]
+def user_moving_peice_click(x,y):
+    x=int((x+320)/80)
+    y=int(abs(y-320)/80)
+    print('{}{}'.format(x,y))
+    if len(user_input_pos)>=2:user_input_pos.clear()
+        
+    user_input_pos.append('{}{}'.format(x,y))
+    print(user_input_pos)
+    return user_input_pos
+
+def user_moving_peice_release(x,y):
+    global user_input_pos
+    x=int((x+320)/80)
+    y=int(abs(y-320)/80)
+    print('{}{}'.format(x,y))
+    if len(user_input_pos)>=2:user_input_pos.clear()
+        
+    user_input_pos.append('{}{}'.format(x,y))
+    print(user_input_pos)
+    user_input('w')
+
+window.listen()
+wpawn1.ondrag(wpawn1.goto)
+wpawn1.onclick(user_moving_peice_click)
+wpawn1.onrelease(user_moving_peice_release)
+wpawn2.ondrag(wpawn2.goto)
+wpawn2.onclick(user_moving_peice_click)
+wpawn2.onrelease(user_moving_peice_release)
+wpawn3.ondrag(wpawn3.goto)
+wpawn3.onclick(user_moving_peice_click)
+wpawn3.onrelease(user_moving_peice_release)
+wpawn4.ondrag(wpawn4.goto)
+wpawn4.onclick(user_moving_peice_click)
+wpawn4.onrelease(user_moving_peice_release)
+wpawn5.ondrag(wpawn5.goto)
+wpawn5.onclick(user_moving_peice_click)
+wpawn5.onrelease(user_moving_peice_release)
+wpawn6.ondrag(wpawn6.goto)
+wpawn6.onclick(user_moving_peice_click)
+wpawn6.onrelease(user_moving_peice_release)
+wpawn7.ondrag(wpawn7.goto)
+wpawn7.onclick(user_moving_peice_click)
+wpawn7.onrelease(user_moving_peice_release)
+wpawn8.ondrag(wpawn8.goto)
+wpawn8.onclick(user_moving_peice_click)
+wpawn8.onrelease(user_moving_peice_release)
+
+wcastle1.ondrag(wcastle1.goto)
+wcastle1.onclick(user_moving_peice_click)
+wcastle1.onrelease(user_moving_peice_release)
+wcastle2.ondrag(wcastle2.goto)
+wcastle2.onclick(user_moving_peice_click)
+wcastle2.onrelease(user_moving_peice_release)
+wbishop1.ondrag(wbishop1.goto)
+wbishop1.onclick(user_moving_peice_click)
+wbishop1.onrelease(user_moving_peice_release)
+wbishop2.ondrag(wbishop2.goto)
+wbishop2.onclick(user_moving_peice_click)
+wbishop2.onrelease(user_moving_peice_release)
+whorse1.ondrag(whorse1.goto)
+whorse1.onclick(user_moving_peice_click)
+whorse1.onrelease(user_moving_peice_release)
+whorse2.ondrag(whorse2.goto)
+whorse2.onclick(user_moving_peice_click)
+whorse2.onrelease(user_moving_peice_release)
+wqueen.ondrag(wqueen.goto)
+wqueen.onclick(user_moving_peice_click)
+wqueen.onrelease(user_moving_peice_release)
+wking.ondrag(wking.goto)
+wking.onclick(user_moving_peice_click)
+wking.onrelease(user_moving_peice_release)
+
 
 
 #####UI ENGINE EXCHANGE###
@@ -441,45 +477,45 @@ def king_status():
     checkmate('b')
     is_king_checked('b')
     
-
-def output_possible_moves(possible_moves):
-    if possible_moves==None:return
-    output_board=[]
-    for i in range(8):output_board.append(list(board[i]))
-    for i in range(len(possible_moves)):
-        output_board[int((possible_moves[i])[1])][int((possible_moves[i])[0])]='x'
-    print('{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n'.format(output_board[0],output_board[1],output_board[2],output_board[3]
-                                                    ,output_board[4],output_board[5],output_board[6],output_board[7]))
-    
-board=[['bc','bh','bb','bq','bk','bc','bh','bb'],
+board=[['bc','bh','bb','bk','bq','bc','bh','bb'],
         ['bp','bp','bp','bp','bp','bp','bp','bp'],
         ['.','.','.','.','.','.','.','.'],
         ['.','.','.','.','.','.','.','.'],
         ['.','.','.','.','.','.','.','.'],
         ['.','.','.','.','.','.','.','.'],
         ['wp','wp','wp','wp','wp','wp','wp','wp'],
-        ['wc','wh','wb','wq','wk','wb','wh','wc']]    
+        ['wc','wh','wb','wk','wq','wb','wh','wc']]    
 
 
 def user_input(color):
-    while True:
-        try:
-            peice_position=str(window.textinput("", "Peice Position"))
-            if (int(peice_position[0]) in range(0,8)) and (int(peice_position[1]) in range(0,8)) and (len(peice_position)==2):
-                if board[int(peice_position[1])][int(peice_position[0])]!='.':
-                    if board[int(peice_position[1])][int(peice_position[0])][0]==color:
-                        move_position=str(window.textinput("", "Move Position"))
-                        if (int(move_position[0]) in range(0,8)) and (int(move_position[1]) in range(0,8)) and (len(move_position)==2):
-                            if move_position in peice_possible_moves(peice_position,enemy_color_finder(peice_position)):
-                                (turtle_board[int(peice_position[1])][int(peice_position[0])]).goto(position_board[int(move_position[1])][int(move_position[0])][0],position_board[int(move_position[1])][int(move_position[0])][1])
-                                board[int(move_position[1])][int(move_position[0])]=board[int(peice_position[1])][int(peice_position[0])]
-                                board[int(peice_position[1])][int(peice_position[0])]='.'
-                                if turtle_board[int(move_position[1])][int(move_position[0])] != None:(turtle_board[int(move_position[1])][int(move_position[0])]).ht()
-                                turtle_board[int(move_position[1])][int(move_position[0])]=turtle_board[int(peice_position[1])][int(peice_position[0])]
-                                turtle_board[int(peice_position[1])][int(peice_position[0])]=None
-                                return
-            print('incorrect input')
-        except: print('incorrect input, system fail')
+    try:
+        peice_position=user_input_pos[0]
+        if (int(peice_position[0]) in range(0,8)) and (int(peice_position[1]) in range(0,8)) and (len(peice_position)==2):
+            if board[int(peice_position[1])][int(peice_position[0])]!='.':
+                if board[int(peice_position[1])][int(peice_position[0])][0]==color:
+                    move_position=user_input_pos[1]
+                    if (int(move_position[0]) in range(0,8)) and (int(move_position[1]) in range(0,8)) and (len(move_position)==2):
+                        if move_position in peice_possible_moves(peice_position,enemy_color_finder(peice_position)):
+                            (turtle_board[int(peice_position[1])][int(peice_position[0])]).goto(position_board[int(move_position[1])][int(move_position[0])][0],position_board[int(move_position[1])][int(move_position[0])][1])
+                            board[int(move_position[1])][int(move_position[0])]=board[int(peice_position[1])][int(peice_position[0])]
+                            board[int(peice_position[1])][int(peice_position[0])]='.'
+                            if turtle_board[int(move_position[1])][int(move_position[0])] != None:                                    
+                                (turtle_board[int(move_position[1])][int(move_position[0])]).ht()
+                                (turtle_board[int(move_position[1])][int(move_position[0])]).goto(500,0)
+                            turtle_board[int(move_position[1])][int(move_position[0])]=turtle_board[int(peice_position[1])][int(peice_position[0])]
+                            turtle_board[int(peice_position[1])][int(peice_position[0])]=None
+                            random_computer_output('b')
+                            print('{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n'.format(board[0],board[1],board[2],board[3],board[4],board[5],board[6],board[7]))
+                            king_status()
+                            return
+                            
+        print('incorrect input')
+        (turtle_board[int(peice_position[1])][int(peice_position[0])]).goto(position_board[int(peice_position[1])][int(peice_position[0])][0],position_board[int(peice_position[1])][int(peice_position[0])][1])
+        return
+    except:
+        print('incorrect input, system fail')
+        (turtle_board[int(peice_position[1])][int(peice_position[0])]).goto(position_board[int(peice_position[1])][int(peice_position[0])][0],position_board[int(peice_position[1])][int(peice_position[0])][1])
+        return
 
 def random_computer_output(color):
     peices_with_moves=[]
@@ -500,12 +536,12 @@ def random_computer_output(color):
     if turtle_board[int(move_position[1])][int(move_position[0])] != None:(turtle_board[int(move_position[1])][int(move_position[0])]).ht()
     turtle_board[int(move_position[1])][int(move_position[0])]=turtle_board[int(peice_position[1])][int(peice_position[0])]
     turtle_board[int(peice_position[1])][int(peice_position[0])]=None
+    king_status()
+
     
 while True:
     window.update()
-    king_status()
-    user_input('w')
-    random_computer_output('b')
+
 
     
 
