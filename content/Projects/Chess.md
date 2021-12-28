@@ -60,8 +60,10 @@ I realised an end to iteration 5 it will be complete when i can get the computer
         <img width="344" alt="image" src="https://user-images.githubusercontent.com/90515435/147374150-22d9ed40-4b02-4e4c-a2e8-f50c1c1068a9.png">
         <Br>
  The last parts of iteration 5 will be implementing the checking code i have already made, checkmate and a mechanic that allows the user to change the pawn into a queen, horse, bishop or castle.
-    
-
+### Sixth Iteration
+In this iteration i am combining the UI with Engine which means the next iteration will have AI.
+<Br>
+[Iteration 6](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/Projects/chess%20files/sixth%20iteration.py)
    
 
 
