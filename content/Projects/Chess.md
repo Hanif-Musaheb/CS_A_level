@@ -64,6 +64,8 @@ I realised an end to iteration 5 it will be complete when i can get the computer
 In this iteration i am combining the UI with Engine which means the next iteration will have AI.
 <Br>
 [Iteration 6](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/Projects/chess%20files/sixth%20iteration.py)
+<Br>
+I have now coded it to the point where you are playing against the computer by dragging peices to where you want them to move a massive upgrade over typing in coordinates which was sooo annoying. Although the computer is just playing completely randomly which is the next challenge. Still this iteration marks the end of building the engine something that took ages and is now (combined with the UI) over 500 lines long.
    
 
 
