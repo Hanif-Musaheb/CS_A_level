@@ -76,6 +76,7 @@ I have now coded it to the point where you are playing against the computer by d
 [First Iteration](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/Projects/chess%20files/ui%20first%20iteration.py)
 <Br>
 chess board is:
+<Br>
 ![board](https://user-images.githubusercontent.com/90515435/147831407-1106ea0d-ee94-4135-9a71-660d8a9aab3e.gif)
 ![black_horse](https://user-images.githubusercontent.com/90515435/141696372-6871da5d-546f-4520-ad24-20e39b97f2d9.gif)
 ![horse_white](https://user-images.githubusercontent.com/90515435/141696381-2d4e7758-9442-4abf-967f-241fcf412e08.gif)
