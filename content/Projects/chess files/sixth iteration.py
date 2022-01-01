@@ -52,35 +52,28 @@ wcastle1=turtle.Turtle()
 wcastle1.shape("white_castle.gif")
 wcastle1.pu()
 wcastle1.goto(-280,-280)
-
 wcastle2=wcastle1.clone()
 wcastle2.goto(280,-280)
-
 wbishop1=turtle.Turtle()
 wbishop1.shape("white_rook.gif")
 wbishop1.pu()
 wbishop1.goto(-120,-280)
-
 wbishop2=wbishop1.clone()
 wbishop2.goto(120,-280)
-
 whorse1=turtle.Turtle()
 whorse1.shape("white_horse.gif")
 whorse1.pu()
 whorse1.goto(-200,-280)
-
 whorse2=whorse1.clone()
 whorse2.goto(200,-280)
-
 wqueen=turtle.Turtle()
 wqueen.shape("white_queen.gif")
 wqueen.pu()
-wqueen.goto(-40,-280)
-
+wqueen.goto(40,-280)
 wking=turtle.Turtle()
 wking.shape("white_king.gif")
 wking.pu()
-wking.goto(40,-280)
+wking.goto(-40,-280)
 
 ####
 
@@ -108,56 +101,45 @@ bcastle1=turtle.Turtle()
 bcastle1.shape("black_castle.gif")
 bcastle1.pu()
 bcastle1.goto(-280,280)
-
 bcastle2=bcastle1.clone()
 bcastle2.goto(280,280)
-
 bbishop1=turtle.Turtle()
 bbishop1.shape("black_rook.gif")
 bbishop1.pu()
 bbishop1.goto(-120,280)
-
 bbishop2=bbishop1.clone()
 bbishop2.goto(120,280)
-
 bhorse1=turtle.Turtle()
 bhorse1.shape("black_horse.gif")
 bhorse1.pu()
 bhorse1.goto(-200,280)
-
 bhorse2=bhorse1.clone()
 bhorse2.goto(200,280)
-
 bqueen=turtle.Turtle()
 bqueen.shape("black_queen.gif")
 bqueen.pu()
-bqueen.goto(-40,280)
-
+bqueen.goto(40,280)
 bking=turtle.Turtle()
 bking.shape("black_king.gif")
 bking.pu()
-bking.goto(40,280)
+bking.goto(-40,280)
 
 user_input_pos=[]
 def user_moving_peice_click(x,y):
     x=int((x+320)/80)
     y=int(abs(y-320)/80)
-    print('{}{}'.format(x,y))
     if len(user_input_pos)>=2:user_input_pos.clear()
         
     user_input_pos.append('{}{}'.format(x,y))
-    print(user_input_pos)
     return user_input_pos
 
 def user_moving_peice_release(x,y):
     global user_input_pos
     x=int((x+320)/80)
     y=int(abs(y-320)/80)
-    print('{}{}'.format(x,y))
     if len(user_input_pos)>=2:user_input_pos.clear()
         
     user_input_pos.append('{}{}'.format(x,y))
-    print(user_input_pos)
     user_input('w')
 
 window.listen()
@@ -223,14 +205,14 @@ position_board=[[[-280,280],[-200,280],[-120,280],[-40,280],[40,280],[120,280],[
                 [[-280,-200],[-200,-200],[-120,-200],[-40,-200],[40,-200],[120,-200],[200,-200],[280,-200]],
                 [[-280,-280],[-200,-280],[-120,-280],[-40,-280],[40,-280],[120,-280],[200,-280],[280,-280]]]
 
-turtle_board=[[bcastle1,bhorse1,bbishop1,bqueen,bking,bbishop2,bhorse2,bcastle2],
+turtle_board=[[bcastle1,bhorse1,bbishop1,bking,bqueen,bbishop2,bhorse2,bcastle2],
                     [bpawn4,bpawn3,bpawn2,bpawn1,bpawn5,bpawn6,bpawn7,bpawn8],
                     [None,None,None,None,None,None,None,None],
                     [None,None,None,None,None,None,None,None],
                     [None,None,None,None,None,None,None,None],
                     [None,None,None,None,None,None,None,None],
                     [wpawn4,wpawn3,wpawn2,wpawn1,wpawn5,wpawn6,wpawn7,wpawn8],
-                    [wcastle1,whorse1,wbishop1,wqueen,wking,wbishop2,whorse2,wcastle2]]    
+                    [wcastle1,whorse1,wbishop1,wking,wqueen,wbishop2,whorse2,wcastle2]]    
 
 ######CHESS ENGINE######
 
@@ -368,14 +350,81 @@ def queen_possible_moves(position,enemy_color):
     possible_moves+=board_stripper_y_x(start_pos_finder_for_y_x(position),position,enemy_color)
     return possible_moves
 
-def king_possible_moves(position,enemy_color):
+
+def castling(position):#only works for white
     possible_moves=[]
+    can_castle=True
+    color = board[int(position[1])][int(position[0])][0]
+    if (has_wking_moved==False and color=='w') or (has_bking_moved==False and color=='b'):
+        for i in range(2):
+            possible_move='{}{}'.format((int(position[0])+i+1),int(position[1]))
+            if board[int(position[1])][int(position[0])+i+1]!='.':can_castle=False
+        if board[int(position[1])][7]!='{}{}'.format(color,'c'):can_castle=False
+        if can_castle==True:possible_moves.append('{}{}'.format((int(position[0])+2),int(position[1])))
+          
+        can_castle=True
+        for i in range(3):
+            possible_move='{}{}'.format((int(position[0])-i-1),int(position[1]))
+            if board[int(position[1])][int(position[0])-i-1]!='.':can_castle=False
+        
+        if board[int(position[1])][0]!='{}{}'.format(color,'c'):can_castle=False
+        if can_castle==True:possible_moves.append('{}{}'.format((int(position[0])-2),int(position[1])))
+    return possible_moves
+
+def castling_UI(position,move_position):#only works for white
+    can_castle=True
+    color = board[int(position[1])][int(position[0])][0]
+    a=None
+    b=None
+    
+    if (has_wking_moved==False and color=='w') or (has_bking_moved==False and color=='b'):
+        for i in range(2):
+            possible_move='{}{}'.format((int(position[0])+i+1),int(position[1]))
+            if board[int(position[1])][int(position[0])+i+1]!='.':can_castle=False
+        if board[int(position[1])][7]!='{}{}'.format(color,'c'):can_castle=False
+        if can_castle==True:a='{}{}'.format((int(position[0])+2),int(position[1]))
+          
+        can_castle=True
+        for i in range(3):
+            possible_move='{}{}'.format((int(position[0])-i-1),int(position[1]))
+            if board[int(position[1])][int(position[0])-i-1]!='.':can_castle=False
+        
+        if board[int(position[1])][0]!='{}{}'.format(color,'c'):can_castle=False
+        if can_castle==True:b='{}{}'.format((int(position[0])-2),int(position[1]))
+    
+    if move_position==a:
+        (turtle_board[int(position[1])][7]).goto(position_board[0][int(position[0])+1][0],position_board[int(position[1])][0][1])
+        board[int(position[1])][int(position[0])+1]=board[int(position[1])][7]
+        board[int(position[1])][7]='.'
+        turtle_board[int(position[1])][int(position[0])+1]=turtle_board[int(position[1])][7]
+        turtle_board[int(position[1])][7]=None
+         
+    elif move_position==b:
+        (turtle_board[int(position[1])][0]).goto(position_board[0][int(position[0])-1][0],position_board[int(position[1])][0][1])
+        board[int(position[1])][int(position[0])-1]=board[int(position[1])][0]
+        board[int(position[1])][0]='.'
+        turtle_board[int(position[1])][int(position[0])-1]=turtle_board[int(position[1])][0]
+        turtle_board[int(position[1])][0]=None
+    
+    
+    
+
+    
+castling_moves=[]
+def king_possible_moves(position,enemy_color):
+    global castling_moves
+    possible_moves=[]
+    castling_moves=[]
+    
     king_move_relative=[[-1,0],[1,0],[-1,1],[0,1],[1,1],[-1,-1],[0,-1],[1,-1]]
     for i in range(8):
         possible_move='{}{}'.format((int(position[0])+king_move_relative[i][0]),int(position[1])+king_move_relative[i][1])
         if (possible_move[0] not in ['-','8']) and (possible_move[1] not in ['-','8']):
             if board[int(possible_move[1])][int(possible_move[0])][0] in ['.',enemy_color]:#remember y and then x
                 possible_moves.append(possible_move)
+
+    possible_moves+=castling(position)
+    castling_moves+=castling(position)
     return possible_moves
 
 def horse_possible_moves(position,enemy_color):
@@ -477,17 +526,21 @@ def king_status():
     checkmate('b')
     is_king_checked('b')
     
-board=[['bc','bh','bb','bk','bq','bc','bh','bb'],
+board=[['bc','bh','bb','bq','bk','bb','bh','bc'],
         ['bp','bp','bp','bp','bp','bp','bp','bp'],
         ['.','.','.','.','.','.','.','.'],
         ['.','.','.','.','.','.','.','.'],
         ['.','.','.','.','.','.','.','.'],
         ['.','.','.','.','.','.','.','.'],
         ['wp','wp','wp','wp','wp','wp','wp','wp'],
-        ['wc','wh','wb','wk','wq','wb','wh','wc']]    
+        ['wc','wh','wb','wq','wk','wb','wh','wc']]    
 
+has_wking_moved=False
+has_bking_moved=False
 
 def user_input(color):
+    global has_wking_moved#
+    
     try:
         peice_position=user_input_pos[0]
         if (int(peice_position[0]) in range(0,8)) and (int(peice_position[1]) in range(0,8)) and (len(peice_position)==2):
@@ -495,7 +548,9 @@ def user_input(color):
                 if board[int(peice_position[1])][int(peice_position[0])][0]==color:
                     move_position=user_input_pos[1]
                     if (int(move_position[0]) in range(0,8)) and (int(move_position[1]) in range(0,8)) and (len(move_position)==2):
-                        if move_position in peice_possible_moves(peice_position,enemy_color_finder(peice_position)):
+                        if move_position in peice_possible_moves(peice_position,enemy_color_finder(peice_position)):###
+                            if (move_position in castling_moves) and board[int(peice_position[1])][int(peice_position[0])][1]=='k':
+                                castling_UI(peice_position,move_position)
                             (turtle_board[int(peice_position[1])][int(peice_position[0])]).goto(position_board[int(move_position[1])][int(move_position[0])][0],position_board[int(move_position[1])][int(move_position[0])][1])
                             board[int(move_position[1])][int(move_position[0])]=board[int(peice_position[1])][int(peice_position[0])]
                             board[int(peice_position[1])][int(peice_position[0])]='.'
@@ -504,14 +559,14 @@ def user_input(color):
                                 (turtle_board[int(move_position[1])][int(move_position[0])]).goto(500,0)
                             turtle_board[int(move_position[1])][int(move_position[0])]=turtle_board[int(peice_position[1])][int(peice_position[0])]
                             turtle_board[int(peice_position[1])][int(peice_position[0])]=None
-                            random_computer_output('b')
-                            print('{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n'.format(board[0],board[1],board[2],board[3],board[4],board[5],board[6],board[7]))
+                            if board[int(move_position[1])][int(move_position[0])]=='wk':has_wking_moved=True#need to change if color changes
                             king_status()
+                            random_computer_output('b')
                             return
-                            
-        print('incorrect input')
-        (turtle_board[int(peice_position[1])][int(peice_position[0])]).goto(position_board[int(peice_position[1])][int(peice_position[0])][0],position_board[int(peice_position[1])][int(peice_position[0])][1])
-        return
+                                
+            print('incorrect input')
+            (turtle_board[int(peice_position[1])][int(peice_position[0])]).goto(position_board[int(peice_position[1])][int(peice_position[0])][0],position_board[int(peice_position[1])][int(peice_position[0])][1])
+            return
     except:
         print('incorrect input, system fail')
         (turtle_board[int(peice_position[1])][int(peice_position[0])]).goto(position_board[int(peice_position[1])][int(peice_position[0])][0],position_board[int(peice_position[1])][int(peice_position[0])][1])
@@ -528,7 +583,6 @@ def random_computer_output(color):
     random.shuffle(peices_with_moves)
     peice_position=peices_with_moves[0]
     move_position=random.choice(peice_possible_moves(peice_position,enemy_color_finder(peice_position)))
-    print(move_position,'position moved to')
     board[int(move_position[1])][int(move_position[0])]=board[int(peice_position[1])][int(peice_position[0])]
     board[int(peice_position[1])][int(peice_position[0])]='.'
 
@@ -541,6 +595,7 @@ def random_computer_output(color):
     
 while True:
     window.update()
+    
 
 
     
