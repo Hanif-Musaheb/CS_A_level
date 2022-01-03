@@ -67,8 +67,6 @@ In this iteration i am combining the UI with Engine which means the next iterati
 <Br>
 I have now coded it to the point where you are playing against the computer by dragging peices to where you want them to move a massive upgrade over typing in coordinates which was sooo annoying. Although the computer is just playing completely randomly which is the next challenge. Still this iteration marks the end of building the engine something that took ages and is now (combined with the UI) over 500 lines long.
 1/1/22:I debugged the code a bit and added castling somethin I forgot to add earlier.
-   
-
 
 ## UI
 ### First iteration
@@ -97,4 +95,16 @@ chess board is:
 
 (evidence of it working)
 ![image](https://user-images.githubusercontent.com/90515435/142595436-9451735d-aee1-4cc7-8533-9f7558e69d20.png)
+        
+## AI
+So now i am starting teh AI section of the chess project the final section which should mean im around 2/3 of the way through what seems like and endless project. To start this i watch a video showing a very summerised way someone else coded their AI and from that video i got the idea to start the AI by coding the AI to evaluate it's self by using my arbitrary values of the peices and evaulate every possible move it can make on its turn and choose the one where it has the highest value.
+```
+        pawn   = 100
+        bishop = 400
+        horse  = 400
+        castle = 600
+        queen  = 1000
+        king   = 1000000
+ ```
+        
 
