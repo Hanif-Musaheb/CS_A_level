@@ -106,7 +106,7 @@ So now i am starting teh AI section of the chess project the final section which
         queen  = 1000
         king   = 1000000
  ```
-[Iteration 7]()
+[Iteration 7](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/Projects/chess%20files/Seventh%20Iteration.py)
 <Br>
 3/1/22: Today i programmed in very limited intelligence so that is does what i said what it would do above; the result being a very suicidal chess AI however still better than randomness and what i plan of having it do is look mulltiple moves ahead(at 2 it should be better than me).       
 
