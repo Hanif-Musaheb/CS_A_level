@@ -230,45 +230,31 @@ board=[['bc','bh','bb','bq','bk','bc','bh','bb'],
         ['.','.','.','.','.','.','.','.'],
         ['.','.','.','.','.','.','.','.'],
         ['wp','wp','wp','wp','wp','wp','wp','wp'],
-        ['wc','wh','wb','wq','wk','wb','wh','wc']]    
+        ['wc','wh','wb','wq','wk','wb','wh','wc']]
+def make_theoretical_board(board,peice_position,move_position):
 
 
-def user_input(color):
-    while True:
-        try:
-            peice_position=str(input('peice position?'))
-            if (int(peice_position[0]) in range(0,8)) and (int(peice_position[1]) in range(0,8)) and (len(peice_position)==2):
-                if board[int(peice_position[1])][int(peice_position[0])]!='.':
-                    if board[int(peice_position[1])][int(peice_position[0])][0]==color:
-                        move_position=str(input('move position'))
-                        if (int(move_position[0]) in range(0,8)) and (int(move_position[1]) in range(0,8)) and (len(move_position)==2):
-                            if move_position in peice_possible_moves(peice_position,enemy_color_finder(peice_position)):
-                                board[int(move_position[1])][int(move_position[0])]=board[int(peice_position[1])][int(peice_position[0])]
-                                board[int(peice_position[1])][int(peice_position[0])]='.'
-                                return
-            print('incorrect input')
-        except:print('incorrect input')
-
-def random_computer_output(color):
-    peices_with_moves=[]
+def theorectical_moves(color,board):
+    theoretical_board=[]
+    for i in range(8):theoretical_board.append(list(board[i]))
+    
     for i in range(8):
         for j in range(8):
-            if board[i][j]!='.':
-                if board[i][j][0]==color:
-                    if peice_possible_moves('{}{}'.format(j,i),enemy_color_finder('{}{}'.format(j,i))) !=[]:peices_with_moves.append('{}{}'.format(j,i))
+            print(board[i][j])
+            
+    
 
-    random.shuffle(peices_with_moves)
-    peice_position=peices_with_moves[0]
-    #print(peice_possible_moves(peice_position,enemy_color_finder(peice_position)))
-    move_position=random.choice(peice_possible_moves(peice_position,enemy_color_finder(peice_position)))
-    print(move_position,'position moved to')
-    board[int(move_position[1])][int(move_position[0])]=board[int(peice_position[1])][int(peice_position[0])]
-    board[int(peice_position[1])][int(peice_position[0])]='.'
+def computer_output(color,board):
+    theorectical_moves(color,board)
+    
+
+
     
 while True:
     is_king_checked('w')
     is_king_checked('b')
-    user_input('w')
+    computer_output('w',board)
     print('{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n'.format(board[0],board[1],board[2],board[3],board[4],board[5],board[6],board[7]))
-    random_computer_output('b')
+    computer_output('b',board)
     print('{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n'.format(board[0],board[1],board[2],board[3],board[4],board[5],board[6],board[7]))
+    user_input=input()
