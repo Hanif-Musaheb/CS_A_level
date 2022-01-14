@@ -1,11 +1,11 @@
 # Chess
-So far i have been workig on the UI and the engine seperatly
+So far I have been working on the UI and the engine seperately.
 ## Chess Engine
 ### First Iteration
 [First Iteration](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/Projects/chess%20files/first%20iteration.py)
 
 
-For movement i propose using a method by which you subtract or add to a peices place in an array
+For movement I propose using a method by which you subtract or add to a pieces place in an array
 ```
 [-9][-8][-7]
 [-1][x][+1]
