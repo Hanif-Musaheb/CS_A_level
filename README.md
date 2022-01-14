@@ -40,7 +40,7 @@ Hanif Musahebs' Computer Science Blog
   * 2.1.5 Thinking concurrently
 
 * **2.2 Problem solving and programming**
-  * 2.2.1 Programming techniques
+  * [2.2.1 Programming techniques](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/2.2%20Problem%20solving%20and%20programming/2.2.1%20Programming%20techniques.md)
   * 2.2.2 Computational methods
 
 * **2.3 Algorithms**
