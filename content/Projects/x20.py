@@ -269,15 +269,15 @@ def board_maker(board,peice_position,move_position):
     possible_move_board=[]
     for i in range(8):possible_move_board.append(list(board[i]))
     
-    board[int(move_position[1])][int(move_position[0])]=board[int(peice_position[1])][int(peice_position[0])]
-    board[int(peice_position[1])][int(peice_position[0])]='.'
+    possible_move_board[int(move_position[1])][int(move_position[0])]=possible_move_board[int(peice_position[1])][int(peice_position[0])]
+    possible_move_board[int(peice_position[1])][int(peice_position[0])]='.'
     return board
     
 
 
-def computer_move(color,board,recursion,recursion_depth):
+def computer_move(color,board,recursion,recursion_depth,theoretical_moves):
     peices_with_moves=[]
-    theoretical_moves=[]#peice_position,move_position,[](new list of the next theoretical moves)
+    #peice_position,move_position,[](new list of the next theoretical moves)
     count=0
     for i in range(8):
         for j in range(8):
@@ -290,22 +290,43 @@ def computer_move(color,board,recursion,recursion_depth):
                             theoretical_moves.append(['{}{}'.format(j,i),possible_move,[]])
                             count+=1
     print(count,'COUNT')
-    print(theoretical_moves,'THEORETICAL MOVES')
-    print(enemy_color_finder('{}{}'.format(j,i),board))
+    #print(theoretical_moves,'THEORETICAL MOVES')
+    #print(enemy_color_finder('{}{}'.format(j,i),board))
     recursion+=1
     if recursion<recursion_depth:
         for move in theoretical_moves:
-            print(move,'move')
-            print(computer_move('w',board_maker(board,move[0],move[1]),recursion,recursion_depth))
+            #print(move,'move')
+            #print(move[2])
+            move[2]+=(computer_move('w',board_maker(board,move[0],move[1]),recursion,recursion_depth,[]))
     return theoretical_moves
                     
-                    
+
+def output_possible_moves(possible_moves):
+    if possible_moves==None:return
+    output_board=[]
+    for i in range(8):output_board.append(list(board[i]))
     
+    peice_position=possible_moves[0]
+    move_position=possible_moves[1]
+    output_board[int(move_position[1])][int(move_position[0])]=output_board[int(peice_position[1])][int(peice_position[0])]
+    output_board[int(peice_position[1])][int(peice_position[0])]='.'
+    print('{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n'.format(output_board[0],output_board[1],output_board[2],output_board[3]
+                                                    ,output_board[4],output_board[5],output_board[6],output_board[7]))
+
+def show_theoretical_moves(theoretical_moves):
+    output_possible_moves(theoretical_moves)
     
     
 while True:
-    computer_move('b',board,0,2)
+    a=computer_move('b',board,0,2,[])
+    show_theoretical_moves([a[0][0],a[0][1]])
+                            
+                           
     input()
+
+##    for i in range(20):
+##        print('{}\n'.format(a[i]))
+
 ##    is_king_checked('w')
 ##    is_king_checked('b')
 ##    random_computer_output('w')
