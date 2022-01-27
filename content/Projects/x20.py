@@ -298,6 +298,7 @@ def computer_move(color,board,recursion,recursion_depth,theoretical_moves):
             #print(move,'move')
             #print(move[2])
             move[2]+=(computer_move('w',board_maker(board,move[0],move[1]),recursion,recursion_depth,[]))
+    #print(theoretical_moves)
     return theoretical_moves
                     
 
@@ -316,10 +317,56 @@ def output_possible_moves(possible_moves):
 def show_theoretical_moves(theoretical_moves):
     output_possible_moves(theoretical_moves)
     
-    
+def theoretical_board(board,theoretical_moves):
+    possible_move_board=[]
+    for i in range(8):possible_move_board.append(list(board[i]))
+    move_position=theoretical_moves[0]
+    print('MOVE POSITION',move_position)
+    peice_position=theoretical_moves[1]
+    possible_move_board[int(move_position[1])][int(move_position[0])]=possible_move_board[int(peice_position[1])][int(peice_position[0])]
+    possible_move_board[int(peice_position[1])][int(peice_position[0])]='.'
+    move_position=theoretical_moves[2]
+    peice_position=theoretical_moves[3]
+    possible_move_board[int(move_position[1])][int(move_position[0])]=possible_move_board[int(peice_position[1])][int(peice_position[0])]
+    possible_move_board[int(peice_position[1])][int(peice_position[0])]='.'
+    return board
+
+def peice_value(peice,color):
+    if peice[1]=='p':value=100
+    elif peice[1]=='h':value=400
+    elif peice[1]=='b':value=400
+    elif peice[1]=='c':value=600
+    elif peice[1]=='q':value=1000
+    elif peice[1]=='k':value=1000000
+    if peice[0] != color:value*=-1
+    return value
+
+def board_valuer(board,color):#evaluating the board
+    move_value=0
+    for i in range(8):
+        for j in range(8):
+            if board[i][j] != '.':
+                move_value+=peice_value(board[i][j],color)
+       
+    return move_value
+
+def move_valuer(theoretical_moves,color):
+    for i in range(len(theoretical_moves)):
+        for j in range(len(theoretical_moves)):
+            moves_in_theory=[]
+            moves_in_theory.append(theoretical_moves[i][0])
+            moves_in_theory.append(theoretical_moves[i][1])
+            moves_in_theory.append(theoretical_moves[i][2][j][0])
+            moves_in_theory.append(theoretical_moves[i][2][j][1])
+            print(board_valuer(theoretical_board(board,theoretical_moves),color))
+            print(moves_in_theory)
+            
+        
 while True:
     a=computer_move('b',board,0,2,[])
-    show_theoretical_moves([a[0][0],a[0][1]])
+    print('A',a)
+    move_valuer(a,'b')
+    ##show_theoretical_moves([a[0][0],a[0][1]])
                             
                            
     input()
