@@ -68,14 +68,22 @@ def display_menu():
     print('1. manually grow\n2. grow automatically\n3. report status\n0.exit')
     get_menu_choice()
 
+def manage_crop(crop):
+    noexit=True
+    while noexit:
+        display_menu()
+        option=get_menu_choice()
+        if option==1:manual_grow(crop)
+        elif option==2:auto_grow(crop,30)
+        elif option==3:print(crop.report())
+        elif option==0:noexit=False
+        
+
     
 def main():
     new_crop=crop(1,4,3)
-    print(new_crop.needs())
-    print(new_crop.report())
-    while True:
-        manual_grow(new_crop)
-        print(new_crop.report())
+    manage_crop(new_crop)
+
    
 
 
