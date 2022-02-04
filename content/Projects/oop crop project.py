@@ -11,7 +11,7 @@ class crop():
         self._type='generic'
 
     def needs(self):
-        return {'light need':self._light_need,'water need':self._water_need}
+        return {'light need':self._light_need,'water need':s	elf._water_need}
     
     def report(self):
         return {'type':self._type,'status':self._status,'growth':self._growth,'days gorwing':self._days_growing}
@@ -48,7 +48,8 @@ def manual_grow(crop):
     while not valid:
         try:
             water=int(input('Water value?'))
-            if 1<=water<=10:valid=True
+            if 1<=water<=10:
+                valid=True
             else:print('not valid')
         except ValueError:
             print('not valid')
@@ -58,21 +59,22 @@ def get_menu_choice():
     option_valid=False
     while not option_valid:
             try:
-                choice=int(input('Water value?'))
-                if 0<=option_valid<=3:valid=True
+                choice=int(input('option (1,2,3,0)'))
+                if 0<=option_valid<=3:option_valid=True
                 else:print('not valid')
             except ValueError:
                 print('not valid')
     return choice
 def display_menu():
     print('1. manually grow\n2. grow automatically\n3. report status\n0.exit')
-    get_menu_choice()
+    
 
 def manage_crop(crop):
     noexit=True
     while noexit:
         display_menu()
         option=get_menu_choice()
+        print('MENU CHOICE',option)
         if option==1:manual_grow(crop)
         elif option==2:auto_grow(crop,30)
         elif option==3:print(crop.report())
