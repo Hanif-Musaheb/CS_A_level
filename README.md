@@ -1,4 +1,4 @@
-# CS_A_level
+# CS Alevel
 Hanif Musahebs' Computer Science Blog
 
 #### **Up Coming In CS:**
