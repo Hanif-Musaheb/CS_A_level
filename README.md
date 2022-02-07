@@ -3,6 +3,7 @@ Hanif Musahebs' Computer Science Blog
 
 #### **Up Coming In CS:**
 - **Test 8/2/22 1.2.1 and 1.2.3**
+- **HW finish the oop project**
  
 [OCR Specification](https://www.ocr.org.uk/Images/170844-specification-accredited-a-level-gce-computer-science-h446.pdf)
 # Contents 
