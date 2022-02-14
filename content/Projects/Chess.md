@@ -113,6 +113,9 @@ So now i am starting the AI section of the chess project the final section which
 10/1/22: Over the past few days i have been working on the AI even though i haven't entered anything i just haven't had anything to enter (sigh). The AI section is shaping up to be the hardest part of the chess project it is as hard as it was to start making progress in the engine section. Even though i did quickly make progress by making the computer look 1 move ahead i haven't been able to much since although i made this cool recurrsive code that i made to help me understand what i was supposed to do with recurssively looking ahead.[cool recurrsive code](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/Projects/cool%20recursive%20code.md). Anyways possible methods of solution: completely isolate the recurrsive ai code to make it easier to see whats going wrong although this will be hard if actually possible since i need the rest of th code to make the AI code make sense. Although if i just scale everything down so that it is a 3by3 board and i just have a castle or some thing i should be able to test it, maybe.
 13/1/22:[New attempt at reducing parameters(x19)](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/Projects/x19.py)
 1/2/22:[x22](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/Projects/chess%20files/x22.py) Some actual progress in the AI, I have been using not so tidy and effecient ways of making my AI look ahead for example I have been using a mixture of iteration and recursion to find possible moves
-      
+### Iteration 8 
+14/2/22: Finally finnished the minimaxing part of the AI and it is now at a point where I could finnish the project but I think ill try add method to get the peices out on to the board. But I am still happy that i got it to that point where it is better than me at chess.
+<br>
+[Iteration 8]()
         
 
