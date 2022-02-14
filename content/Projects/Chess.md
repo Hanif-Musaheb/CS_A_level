@@ -76,7 +76,7 @@ I have now coded it to the point where you are playing against the computer by d
 <Br>
 chess board is:
 <Br>
-![board2](https://user-images.githubusercontent.com/90515435/153953655-be557e73-3a62-45b6-bf79-f7f059250537.gif)
+![board3](https://user-images.githubusercontent.com/90515435/153957016-b8e3acd6-dc92-48d9-b882-6c40735833f2.gif)
 ![black_horse](https://user-images.githubusercontent.com/90515435/141696372-6871da5d-546f-4520-ad24-20e39b97f2d9.gif)
 ![horse_white](https://user-images.githubusercontent.com/90515435/141696381-2d4e7758-9442-4abf-967f-241fcf412e08.gif)
 ![rook_black](https://user-images.githubusercontent.com/90515435/141696387-f72f8168-7db5-4ae7-9595-1505ec59f451.gif)
