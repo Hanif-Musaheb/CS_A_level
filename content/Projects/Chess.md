@@ -116,6 +116,6 @@ So now i am starting the AI section of the chess project the final section which
 ### Iteration 8 
 14/2/22: Finally finnished the minimaxing part of the AI and it is now at a point where I could finnish the project but I think ill try add method to get the peices out on to the board. But I am still happy that i got it to that point where it is better than me at chess.
 <br>
-[Iteration 8]()
+[Iteration 8](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/Projects/chess%20files/Iteration%208.py)
         
 
