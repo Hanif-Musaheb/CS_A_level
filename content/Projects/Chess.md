@@ -117,5 +117,6 @@ So now i am starting the AI section of the chess project the final section which
 14/2/22: Finally finnished the minimaxing part of the AI and it is now at a point where I could finnish the project but I think ill try add method to get the peices out on to the board. But I am still happy that i got it to that point where it is better than me at chess.
 <br>
 [Iteration 8](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/Projects/chess%20files/Iteration%208.py)
-        
-
+15/2/22: I have tested my program no a little more and is has become apparent that it is super passive due to a byproduct of it not seeing a possible move 4 moves ahead. The easiest way to change this is to make it do a random move if it can't see a move but by doing this it might make a bad move randomly. The way I see it is there are 2 solutions:
+        1. I make a bunch of boards that are different for each peice putting a value for each place on the board for that peice (essential incentives the AI to peices in the best place on the board).
+        2. Or I hard code in some chess openings that it selects at random and make it go to those places when nothing is attacking.
