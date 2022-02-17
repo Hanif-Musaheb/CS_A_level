@@ -51,4 +51,4 @@ Hanif Musahebs' Computer Science Blog
   * 2.3.1 Algorithms
 
 ### Coding projects
-- [minor projects](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/Projects/minor%20projects.md)
+- [Projects](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/Projects/minor%20projects.md)
