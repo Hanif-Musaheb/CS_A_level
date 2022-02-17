@@ -718,6 +718,12 @@ def value_sequencing(sequenced_moves):
         valued_sequenced_moves.append(c)
     return valued_sequenced_moves
 
+def random_index(a,c):
+    b=[]
+    for i in range(len(a)):
+        if a[i]==c:
+            b.append(i)    
+    return random.choice(b)
 
 def minimaxing(sequenced_moves,squenced_values,theoretical_moves):
     base_move_values=[]
@@ -728,8 +734,13 @@ def minimaxing(sequenced_moves,squenced_values,theoretical_moves):
             for value1 in value2:
                 a.append(min(value1))
             b.append(max(a))
-        base_move_values.append(min(b))    
-    return theoretical_moves[base_move_values.index(max(base_move_values))][0],theoretical_moves[base_move_values.index(max(base_move_values))][1]
+        base_move_values.append(min(b))
+        
+    if max(base_move_values)==board_valuer(board,'b'):
+        print('???')
+        
+    random_index_value=random_index(base_move_values,max(base_move_values))    
+    return theoretical_moves[random_index_value][0],theoretical_moves[random_index_value][1] 
     
     
 def output_of_ai():    
@@ -756,4 +767,3 @@ while True:
 
 
     
-
