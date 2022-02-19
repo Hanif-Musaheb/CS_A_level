@@ -204,14 +204,35 @@ position_board=[[[-280,280],[-200,280],[-120,280],[-40,280],[40,280],[120,280],[
                 [[-280,-200],[-200,-200],[-120,-200],[-40,-200],[40,-200],[120,-200],[200,-200],[280,-200]],
                 [[-280,-280],[-200,-280],[-120,-280],[-40,-280],[40,-280],[120,-280],[200,-280],[280,-280]]]
 
-turtle_board=[[bcastle1,bhorse1,bbishop1,bking,bqueen,bbishop2,bhorse2,bcastle2],
-                    [bpawn4,bpawn3,bpawn2,bpawn1,bpawn5,bpawn6,bpawn7,bpawn8],
+##turtle_board=[[bcastle1,bhorse1,bbishop1,bking,bqueen,bbishop2,bhorse2,bcastle2],
+##                    [bpawn4,bpawn3,bpawn2,bpawn1,bpawn5,bpawn6,bpawn7,bpawn8],
+##                    [None,None,None,None,None,None,None,None],
+##                    [None,None,None,None,None,None,None,None],
+##                    [None,None,None,None,None,None,None,None],
+##                    [None,None,None,None,None,None,None,None],
+##                    [wpawn4,wpawn3,wpawn2,wpawn1,wpawn5,wpawn6,wpawn7,wpawn8],
+##                    [wcastle1,whorse1,wbishop1,wking,wqueen,wbishop2,whorse2,wcastle2]]
+bcastle1.ht()
+bhorse1.ht()
+bbishop1.ht()
+bbishop2.ht()
+bhorse2.ht()
+bpawn4.ht()
+bpawn3.ht()
+bpawn2.ht()
+bpawn1.ht()
+bpawn5.ht()
+bpawn6.ht()
+bking.ht()
+
+turtle_board=[[None,None,None,None,bqueen,None,None,bcastle2],
+                    [None,None,None,None,None,None,bpawn7,bpawn8],
                     [None,None,None,None,None,None,None,None],
                     [None,None,None,None,None,None,None,None],
                     [None,None,None,None,None,None,None,None],
                     [None,None,None,None,None,None,None,None],
                     [wpawn4,wpawn3,wpawn2,wpawn1,wpawn5,wpawn6,wpawn7,wpawn8],
-                    [wcastle1,whorse1,wbishop1,wking,wqueen,wbishop2,whorse2,wcastle2]]    
+                    [wcastle1,whorse1,wbishop1,wking,wqueen,wbishop2,whorse2,wcastle2]]  
 
 ######CHESS ENGINE######
 
@@ -437,6 +458,37 @@ def horse_possible_moves(position,enemy_color,board):
             if board[int(possible_move[1])][int(possible_move[0])][0] in ['.',enemy_color]:#remember y and then x
                 possible_moves.append(possible_move)
     return possible_moves
+
+
+
+def pawn_on_backline(board,color):
+    for i in range(len(board[0])):
+        if board[0][i]=='wp':
+            position='{}{}'.format(i,'0')
+            if (position[1]=='0' or position[1]=='7'):
+                while True:
+                    peice=str(window.textinput("b=Bishop c=Castle h=Horse q=Queen", "Peice?"))
+                    if peice in ['b','c','h','q']:
+                        board[int(position[1])][int(position[0])]='{}{}'.format(color,peice)
+                        if color=='b':
+                            if peice=='b':(turtle_board[int(position[1])][int(position[0])]).shape("black_rook.gif")
+                            if peice=='c':(turtle_board[int(position[1])][int(position[0])]).shape("black_castle.gif")
+                            if peice=='h':(turtle_board[int(position[1])][int(position[0])]).shape("black_horse.gif")
+                            if peice=='q':(turtle_board[int(position[1])][int(position[0])]).shape("black_king.gif")
+                        if color=='w':
+                            if peice=='b':(turtle_board[int(position[1])][int(position[0])]).shape("white_rook.gif")
+                            if peice=='c':(turtle_board[int(position[1])][int(position[0])]).shape("white_castle.gif")
+                            if peice=='h':(turtle_board[int(position[1])][int(position[0])]).shape("white_horse.gif")
+                            if peice=='q':(turtle_board[int(position[1])][int(position[0])]).shape("white_king.gif")
+                        window.update()    
+                        return
+        elif board[7][i]=='bp':
+            position='{}{}'.format(i,'7')
+            board[int(position[1])][int(position[0])]='bq'
+            (turtle_board[int(position[1])][int(position[0])]).shape("black_king.gif")
+            window.update()    
+            return
+            
     
 def pawn_possible_moves(position,enemy_color,board,computer_search):
     color = board[int(position[1])][int(position[0])][0]
@@ -444,23 +496,8 @@ def pawn_possible_moves(position,enemy_color,board,computer_search):
     if color=='b':direction=1
     elif color=='w':direction=-1
     
-    if position[1]=='0' or position[1]=='7':
-        while True:
-            peice=str(window.textinput("b=Bishop c=Castle h=Horse q=Queen", "Peice?"))
-            if peice in ['b','c','h','q']:
-                board[int(position[1])][int(position[0])]='{}{}'.format(color,peice)
-                if color=='b':
-                    if peice=='b':(turtle_board[int(position[1])][int(position[0])]).shape("black_rook.gif")
-                    if peice=='c':(turtle_board[int(position[1])][int(position[0])]).shape("black_castle.gif")
-                    if peice=='h':(turtle_board[int(position[1])][int(position[0])]).shape("black_horse.gif")
-                    if peice=='q':(turtle_board[int(position[1])][int(position[0])]).shape("black_king.gif")
-                if color=='w':
-                    if peice=='b':(turtle_board[int(position[1])][int(position[0])]).shape("white_rook.gif")
-                    if peice=='c':(turtle_board[int(position[1])][int(position[0])]).shape("white_castle.gif")
-                    if peice=='h':(turtle_board[int(position[1])][int(position[0])]).shape("white_horse.gif")
-                    if peice=='q':(turtle_board[int(position[1])][int(position[0])]).shape("white_king.gif")
-                window.update()    
-                return peice_possible_moves(position,enemy_color_finder(position))
+    
+    if (position[1]=='0' or position[1]=='7')and computer_search==True:return possible_moves
         
     possible_move='{}{}'.format(int(position[0]),int(position[1])+direction)
     if board[int(possible_move[1])][int(possible_move[0])][0]=='.':
@@ -527,8 +564,8 @@ def king_status(board):
     checkmate('b',board)
     is_king_checked('b',board)
     
-board=[['bc','bh','bb','bq','bk','bb','bh','bc'],
-        ['bp','bp','bp','bp','bp','bp','bp','bp'],
+board=[['.','.','.','.','bk','.','.','bc'],
+        ['.','.','.','.','.','.','bp','bp'],
         ['.','.','.','.','.','.','.','.'],
         ['.','.','.','.','.','.','.','.'],
         ['.','.','.','.','.','.','.','.'],
@@ -565,8 +602,12 @@ def user_input(color):
                         turtle_board[int(move_position[1])][int(move_position[0])]=turtle_board[int(peice_position[1])][int(peice_position[0])]
                         turtle_board[int(peice_position[1])][int(peice_position[0])]=None
                         if board[int(move_position[1])][int(move_position[0])]=='wk':has_wking_moved=True#need to change if color changes
-                        king_status(board)
+##                        king_status(board)
+##                        board_outputter(turtle_board)
+##                        board_outputter(board)
+                        pawn_on_backline(board,'w')
                         output_of_ai()
+                        
                         return
                                 
             print('incorrect input')
@@ -738,7 +779,7 @@ def minimaxing(sequenced_moves,squenced_values,theoretical_moves):
         
     if max(base_move_values)==board_valuer(board,'b'):
         print('???')
-        
+    print(base_move_values)    
     random_index_value=random_index(base_move_values,max(base_move_values))    
     return theoretical_moves[random_index_value][0],theoretical_moves[random_index_value][1] 
     
@@ -759,6 +800,8 @@ def output_of_ai():
     if turtle_board[int(move_position[1])][int(move_position[0])] != None:(turtle_board[int(move_position[1])][int(move_position[0])]).ht()
     turtle_board[int(move_position[1])][int(move_position[0])]=turtle_board[int(peice_position[1])][int(peice_position[0])]
     turtle_board[int(peice_position[1])][int(peice_position[0])]=None
+    pawn_on_backline(board,'b')
+
 
     
 while True:
