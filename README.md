@@ -2,7 +2,7 @@
 Hanif Musahebs' Computer Science Blog
 
 #### **Up Coming In CS:**
-- **test in oop 11/3/22**
+
  
 [OCR Specification](https://www.ocr.org.uk/Images/170844-specification-accredited-a-level-gce-computer-science-h446.pdf)
 # Contents 
