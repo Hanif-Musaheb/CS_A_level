@@ -23,8 +23,8 @@ Hanif Musahebs' Computer Science Blog
   * [1.3.2 Databases](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/1.3%20Exchanging%20data/1.3.2%20Databases.md)
     * [SQL](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/1.3%20Exchanging%20data/1.3.2%20SQL.md)
   * 1.3.3 Networks
-  * [1.3.4 Web technologies]()
-    * [html]()
+  * [1.3.4 Web technologies](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/1.3%20Exchanging%20data/1.3.4%20Web%20technologies.md)
+    * [html](https://github.com/Hanif-Musaheb/CS_A_level/tree/main/content/1.3%20Exchanging%20data/html)
 
 * **1.4 Data types, data structures and algorithms**
   * [1.4.1 Data types](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/1.4%20Data%20types,%20data%20structures%20and%20algorithms/1.4.1.md)
