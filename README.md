@@ -28,7 +28,7 @@ Hanif Musahebs' Computer Science Blog
 
 * **1.4 Data types, data structures and algorithms**
   * [1.4.1 Data types](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/1.4%20Data%20types,%20data%20structures%20and%20algorithms/1.4.1.md)
-  * 1.4.2 Data structures
+  * [1.4.2 Data structures]()
   * 1.4.3 Boolean Algebra
 
 * **1.5 Legal, moral, cultural and ethical issues**
