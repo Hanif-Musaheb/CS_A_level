@@ -20,7 +20,7 @@
 
 [**GYM membership**](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/Projects/gym%20oop.py)
 
-
+[**Small Life Prototype**]()
 
 
 
