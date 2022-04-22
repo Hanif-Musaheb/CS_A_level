@@ -2,7 +2,30 @@
 Hanif Musahebs' Computer Science Blog
 
 #### **Up Coming In CS:**
+'''python
+import random
 
+rand_num=random.randint(0,30)
+user_num=int(input('NUM'))
+stake=int(input('STAKE'))
+money=30
+if stake in range(1,money):
+    if num ==rand_num:
+        calculate_win
+def calculate_win():
+    original_stake=stake
+    if num in [2,3,5,7,11,13,17,19,23,29]:
+        stake*=5
+    if type(num/2)==int:
+        stake*=2
+    if num in[0,10,20,30]:
+        stake*=3
+    if num<5:
+        stake*=2
+    stake-=stake*2 
+    return stake
+    
+'''
  
 [OCR Specification](https://www.ocr.org.uk/Images/170844-specification-accredited-a-level-gce-computer-science-h446.pdf)
 # Contents 
