@@ -2,7 +2,7 @@
 Hanif Musahebs' Computer Science Blog
 
 #### **Up Coming In CS:**
-'''python
+```python
 import random
 
 rand_num=random.randint(0,30)
@@ -25,7 +25,7 @@ def calculate_win():
     stake-=stake*2 
     return stake
     
-'''
+```
  
 [OCR Specification](https://www.ocr.org.uk/Images/170844-specification-accredited-a-level-gce-computer-science-h446.pdf)
 # Contents 
