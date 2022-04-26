@@ -2,6 +2,7 @@
 Hanif Musahebs' Computer Science Blog
 
 #### **Up Coming In CS:**
+![image](https://user-images.githubusercontent.com/90515435/165313184-8c79b19a-e248-4801-9a07-ff2e13b03733.png)
 
 [OCR Specification](https://www.ocr.org.uk/Images/170844-specification-accredited-a-level-gce-computer-science-h446.pdf)
 # Contents 
