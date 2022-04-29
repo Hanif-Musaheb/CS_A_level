@@ -1,4 +1,10 @@
 # Small Life Project Prototype
+[hexagon script]()
+[]()
+[]()
+[]()
+[]()
+
 Finally get it to replicate at is border with no iternal replication meaning it works with much better performance than before as a bunch(~thousands) of hexagons aren't being spawned in.
 Now I am trying to spawn the hexagons in at regular interavls meaning there wont be weird gaps. This is a picture of me changing the repliction distance.
 (In this image it set 1.25*hexagon width=1.25) 
