@@ -123,5 +123,6 @@ So now i am starting the AI section of the chess project the final section which
 <br>
 17/2/22: I added a random index function making my ai random when it doesnt have a move but importantly it wont randomly make a wrong move. With this addition I think I will end development on my chess AI even thoughy I could improve it via alpha beta pruning making it faster or adding values for positions on the board for peice so that the AI has a sense of valuble positions. However I think other projects are calling.
 
+<br>    
         
-        [the final code](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/Projects/chess%20files/Iteration%208.py)
+[the final code](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/Projects/chess%20files/Iteration%208.py)
