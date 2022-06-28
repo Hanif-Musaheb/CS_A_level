@@ -38,7 +38,9 @@ Hanif Musahebs' Computer Science Blog
 
 ### Algorithms and programming - Component 2
 [ANALYSIS](https://docs.google.com/document/d/14TF6YFUd46tknsDKK5GhCGB84pe33D29RSQRBWACZgg/edit)
+<BR>
 [MARK SCHEME](https://docs.google.com/spreadsheets/d/1dbtgCIu92rz9A3yt1Tobvtyf6dej4c8-72beQBOCjvk/edit#gid=361767572)
+ <br>
 [EXAMPLE](https://drive.google.com/drive/folders/10cT0mehrG6RWToPtGAwAnzCuuSQT1PGW)
 
 * **2.1 Elements of computational thinking**
