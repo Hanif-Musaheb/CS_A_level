@@ -14,10 +14,11 @@ public class hex_plant : MonoBehaviour
     bool locked=false;
     public int c=5;
     public int current_direction = 0;
-    List<int> free_boarders = new List<int> { };
-
-
+    public List<int> free_boarders = new List<int> { };
     Quaternion spawn_rotation = Quaternion.Euler(0, 0, 0);
+
+    public Renderer plant_renderer;
+    
 
     void Start()
     {
@@ -34,8 +35,8 @@ public class hex_plant : MonoBehaviour
     }
 
     void Update()
-    {
-        
+    { 
+
     }
 
     void FixedUpdate()
@@ -59,10 +60,12 @@ public class hex_plant : MonoBehaviour
                 replicate();
             }
         }
+       
     }
 
     List<int> boarders_check()
     {
+        free_boarders = new List<int> { };
         while (true)
         {
             third_timer += Time.deltaTime;
@@ -76,18 +79,19 @@ public class hex_plant : MonoBehaviour
                     current_direction = 0;
                     return free_boarders;
                 }
-            }
 
-            RaycastHit2D hit_info = Physics2D.Raycast(transform.position, transform.right, 1.5f);
-            if (hit_info.collider != null)
-            {
-                //Debug.DrawLine(transform.position, hit_info.point, Color.red);
-                
-            }
-            else
-            {
-                //Debug.DrawLine(transform.position, transform.position + transform.right * 10, Color.green);
-                free_boarders.Add(current_direction);
+
+                RaycastHit2D hit_info = Physics2D.Raycast(transform.position, transform.right, 0.4f);
+                if (hit_info.collider != null)
+                {
+                    //Debug.DrawLine(transform.position, hit_info.point, Color.red);
+
+                }
+                else
+                {
+                    //Debug.DrawLine(transform.position, transform.position + transform.right * 10, Color.green);
+                    free_boarders.Add(current_direction);
+                }
             }
             
         }
@@ -100,14 +104,18 @@ public class hex_plant : MonoBehaviour
         if (free_boarders.Count > 0)
         {
             timer = 0;
-            float radius = Mathf.Sqrt(Mathf.Pow(transform.localScale.x, 2) + Mathf.Pow(transform.localScale.y, 2));
-            radius = radius / 1.25f;
-            float direction = (boarder_direction[free_boarders[Random.Range(0, free_boarders.Count)]]) * Mathf.Deg2Rad;
+            //float radius = Mathf.Sqrt(Mathf.Pow(transform.localScale.x, 2) + Mathf.Pow(transform.localScale.y, 2));
+            float radius = 0.125f;
+            int rand_num = Random.Range(0, free_boarders.Count);
+            float direction = (boarder_direction[free_boarders[rand_num]]) * Mathf.Deg2Rad;
             float rand_boarder_x = Mathf.Cos(direction) * radius;
             float rand_boarder_y = Mathf.Sin(direction) * radius;
             Instantiate(plant_prefab, new Vector2(rand_boarder_x + transform.position.x, rand_boarder_y + transform.position.y), spawn_rotation);
+            
         }
         else {
+            float rand_color_factor = Random.Range(-0.1f, 0.1f);
+            plant_renderer.material.color = new Vector4(0.64f+ rand_color_factor, 0.47f+ rand_color_factor, 0.01f+ rand_color_factor, 1);//163, 121, 21
             locked = true;
         }
 
