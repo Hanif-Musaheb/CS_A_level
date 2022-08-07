@@ -59,4 +59,4 @@ Hanif Musahebs' Computer Science Blog
 
 ### Coding projects
 - [Projects](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/Projects/minor%20projects.md)
-- [Smaller Life Project]()
+- [Smaller Life Project](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/smaller%20life%20project.md)
