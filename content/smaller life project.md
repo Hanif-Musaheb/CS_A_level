@@ -17,10 +17,17 @@ Things to change for next iteration:
 
 ## as of 18th of sep 2022
 [playing_UI]()
+
 [main_command]()
+
 [player_script]()
+
 [purple_square]()
+
 [root_cell]()
+
 [attack_cell]()
+
 [basic_virus_script]()
+
 [projectile_script]()
