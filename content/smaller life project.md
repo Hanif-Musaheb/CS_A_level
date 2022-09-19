@@ -16,18 +16,18 @@ Things to change for next iteration:
 
 
 ## as of 18th of sep 2022
-[playing_UI]()
+[playing_UI](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/smaller%20life/as%20of%2018th%20sep/playing_UI.cs)
 
-[main_command]()
+[main_command](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/smaller%20life/as%20of%2018th%20sep/main_command.cs)
 
-[player_script]()
+[player_script](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/smaller%20life/as%20of%2018th%20sep/player_script.cs)
 
-[purple_square]()
+[purple_square](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/smaller%20life/as%20of%2018th%20sep/purple_square.cs)
 
-[root_cell]()
+[root_cell](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/smaller%20life/as%20of%2018th%20sep/root_cell.cs)
 
-[attack_cell]()
+[attack_cell](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/smaller%20life/as%20of%2018th%20sep/attack_cell_script.cs)
 
-[basic_virus_script]()
+[basic_virus_script](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/smaller%20life/as%20of%2018th%20sep/basic_virus_script.cs)
 
-[projectile_script]()
+[projectile_script](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/smaller%20life/as%20of%2018th%20sep/projectile_script.cs)
