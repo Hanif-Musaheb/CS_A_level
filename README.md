@@ -45,7 +45,7 @@ Hanif Musahebs' Computer Science Blog
 
 * **2.1 Elements of computational thinking**
   * [2.1.1 Thinking abstractly](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/2.1/2.1.1%20Thinking%20Abstractly.md)
-  * 2.1.2 Thinking ahead
+  * [2.1.2 Thinking ahead](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/2.1/2.1.2%20Thinking%20Ahead.md)
   * [2.1.3 Thinking procedurally](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/2.1/2.1.3%20Thinking%20Procedurally.md)
   * 2.1.4 Thinking logically
   * [2.1.5 Thinking concurrently](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/2.1/2.1.5%20Thinking%20Concurrently.md)
