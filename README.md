@@ -48,7 +48,7 @@ Hanif Musahebs' Computer Science Blog
   * 2.1.2 Thinking ahead
   * [2.1.3 Thinking procedurally](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/2.1/2.1.3%20Thinking%20Procedurally.md)
   * 2.1.4 Thinking logically
-  * 2.1.5 Thinking concurrently
+  * [2.1.5 Thinking concurrently](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/2.1/2.1.5%20Thinking%20Concurrently.md)
 
 * **2.2 Problem solving and programming**
   * [2.2.1 Programming techniques](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/2.2%20Problem%20solving%20and%20programming/2.2.1%20Programming%20techniques.md)
