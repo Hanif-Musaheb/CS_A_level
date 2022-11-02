@@ -23,7 +23,7 @@ Hanif Musahebs' Computer Science Blog
   * 1.3.1 Compression, encryption and hashing
   * [1.3.2 Databases(2)](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/1.3%20Exchanging%20data/1.3.2%20Databases.md)
     * [SQL](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/1.3%20Exchanging%20data/1.3.2%20SQL.md)
-  * 1.3.3 Networks
+  * [1.3.3 Networks](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/1.3%20Exchanging%20data/1.3.3%20networks.md)
   * [1.3.4 Web technologies(2)](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/1.3%20Exchanging%20data/1.3.4%20Web%20technologies.md)
     * [html](https://github.com/Hanif-Musaheb/CS_A_level/tree/main/content/1.3%20Exchanging%20data/html)
 
