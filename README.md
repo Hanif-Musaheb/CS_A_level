@@ -1,9 +1,10 @@
 # CS Alevel
 Hanif Musahebs' Computer Science Blog
 
-#### **Up Coming In CS:**
-- **Test** - web tech 1.3.4
+
 [exemplar work](https://www.ocr.org.uk/Images/514655-programming-project-set-a-high.pdf)
+
+[practice papers](https://a-level-study.co.uk/computer-science/a-level-computer-science-past-papers/)
 
 [OCR Specification](https://www.ocr.org.uk/Images/170844-specification-accredited-a-level-gce-computer-science-h446.pdf)
 # Contents 
