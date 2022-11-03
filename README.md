@@ -5,7 +5,7 @@ Hanif Musahebs' Computer Science Blog
 [exemplar work](https://www.ocr.org.uk/Images/514655-programming-project-set-a-high.pdf)
 
 [practice papers](https://a-level-study.co.uk/computer-science/a-level-computer-science-past-papers/)
-
+[notes of someon else](https://drive.google.com/file/d/0B3iA36DCQP9OcUx5c3hLWGUyemc/view?resourcekey=0-W_FKmkYJu4crlbh4VphfDA)
 [OCR Specification](https://www.ocr.org.uk/Images/170844-specification-accredited-a-level-gce-computer-science-h446.pdf)
 # Contents 
 ### Computer Systems - Component 1
