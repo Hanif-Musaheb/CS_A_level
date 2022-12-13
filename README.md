@@ -55,7 +55,7 @@ Hanif Musahebs' Computer Science Blog
   * [2.2.2 Computational methods](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/2.2%20Problem%20solving%20and%20programming/2.2.2%20computational%20methods.md)
 
 * **2.3 Algorithms**
-  * 2.3.1 Algorithms[https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/2.3/2.3.1%20Algorithms.md]
+  * [2.3.1 Algorithms](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/2.3/2.3.1%20Algorithms.md)
 
 ### Coding projects
 - [Projects](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/Projects/minor%20projects.md)
