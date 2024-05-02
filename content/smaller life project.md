@@ -1,4 +1,6 @@
 # smaller life project
+https://simmer.io/@Hanif/smaller-life
+
 ## start of project
 [main_command](https://github.com/Hanif-Musaheb/CS_A_level/blob/main/content/smaller%20life/main_command.cs)
 
